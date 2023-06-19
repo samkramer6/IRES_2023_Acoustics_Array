@@ -1,7 +1,7 @@
 This is the readme.txt file for the 2023 IRES acoustics work. It will include documentation about the folders 
 and what is in each folder. 
 
-	Sam Kramer
+	Sam Kramer 
 	Summer 2023
 
 Files:

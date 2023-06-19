@@ -24,6 +24,7 @@ function filtered_data = filter_data(test_data,filter_center,Fs)
     bandpass_filt = butter(4,filter_band);
 
 % --Filter data
+    
 
 % --Return data
 

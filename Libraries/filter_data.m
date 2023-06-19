@@ -25,7 +25,6 @@ function filtered_data = filter_data(test_data,filter_center,Fs)
 
 % --Filter data
     
-
 % --Return data
 
 end

@@ -30,9 +30,13 @@ codegen/
 # Octave session info
 octave-workspace
 
-# --Other MATLAB Code to be ignored goes here
-IRES Acoustics Control Pannel.mlappinstall.zip
-Depreciated
+# --Folders to be ignored
 Array Procedures and Code
+Depreciated
+External Documentation
 Media
 Test Data
+
+# --Code to be ignored
+IRES Acoustics Control Pannel.mlappinstall.zip
+

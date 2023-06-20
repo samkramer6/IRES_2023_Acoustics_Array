@@ -13,10 +13,10 @@ function spectrogram_data(data,mic_num)
 
 % --Load in data
     mic_data = load(data);
-    mic_data = mic_data.test_data_matrix;
+    mic_data = mic_data.final_output_data;
 
 % --Find ind = 1
-    ind = find(mic_data(2:end-1,1) == 1.000);
+    ind = find(mic_data(2:end-1,1) == 2.000);
 
     fs = 1/(mic_data(4,1) - mic_data(3,1));
 

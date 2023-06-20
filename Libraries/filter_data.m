@@ -15,6 +15,10 @@ function filtered_data = filter_data(test_data,filter_center,Fs)
 %   June 19th, 2023
 %
 
+% --Pull out test data
+    data = load(test_data);
+    data = data.final_output_data;
+
 % --Develop filter band
     lower_filt = filter_center - 0.15*filter_center;
     upper_filt = filtere_center + 0.15*filter_center;

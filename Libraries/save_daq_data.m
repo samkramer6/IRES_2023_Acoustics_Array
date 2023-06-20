@@ -1,4 +1,4 @@
-function save_daq_data(test_data, time_start, time_end, file_name)
+function test_data_matrix = save_daq_data(test_data, time_start, time_end, file_name)
 %
 %   Will save the Daq data as a .csv file based on the data and name inputs
 %   into the function file.

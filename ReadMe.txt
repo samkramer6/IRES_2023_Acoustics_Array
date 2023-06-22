@@ -2,13 +2,14 @@ This is the readme.txt file for the 2023 IRES acoustics work. It will include do
 and what is in each folder. 
 
 	Sam Kramer
+	Acoustics Engineering Team lead
 	Summer 2023
 
 Files:
 	1. Test Log -		This is the test log that is for official tests where data acquisition of bat flight is	
 				the main goal. Tests to validate system will also be logged and should be done regularly
 				to prevent degradation of system capabilities. Any mics not working or problematic will be
-				noted within the test log notes.
+				noted within the test log notes. Note every test, including validation tests.
 
 	2. Operation Manual -	This is the MATLAB live script that is the operation manual for the entire acoustics array
 				and is executeable within the IDE. If the DAQ is connected and setup properly the live script
@@ -22,20 +23,29 @@ Files:
 
 	3. Folder Guide -	This is a PNG file that shows the tree folder order within the Acoustics Array folder. This should 
 				be taken as a user guide for the location of the different folders if they are searching for a
-				specific data set or folder. If there is some sort of restructuring, this should be updated.
+				specific data set or folder. If there is some sort of restructuring, this should be updated. This is NOT 
+				included in the github and is noted on the .gitignore, only located on drive and locally on lab.
+
+	4. .gitignore -		The gitignore file is a tool for the acoustics github. This file includes all the files on the lab
+				computer's HDD that are not needed on the github. This includes files like the data, documentation, and 
+				media. These are not needed on github becuase the drive is better suited for the saving and sharing of these
+				files.
 
 Folders:
 	1. Test Data -		This is the folder that holds all the test data that was collected by the acoustics array.
 				This holds all raw data files in the form of .mat files. There are two sub-folders one
 				designated for validation data for system, and another for data acquisition from full-speed
-				bat tests.
+				bat tests. The naming convention for the test files is [TYPE][DATE-GROUP] i.e. Validation 22JUN23.
 
 		Bat Test Data:		This folder holds all the bat test data, and there are sub folders for each test that
-					is completed. Each test should include the date that the test occured.
+					is completed. Each test should include the date that the test occured. Update the test log after
+					each test that is completed.
 		
 		Validation Data:	This folder holds all validation test data for the array. These validation tests should
 					be repeated regularly to ensure that all mics are still working properly, and to diagnose
-					any new problems.
+					any new problems. There are also tests that were ran with the batbot as the main sound emitter that
+					should be logged in this folder as well. After each test, update the test log to keep a documented
+					track of the system. This helps with the debugging of the system and with team turnover.
 
 
 	2. Control Pannel - 	This is the folder that will store the standalone acoustics control pannel. There are other 
@@ -45,8 +55,8 @@ Folders:
 		Mic_Control_Pannel: 	This is a MATLAB app that will be used to setup and collect data from just the acoustics
 					array. This has three different sections relating to data acquisition and then data 
 					saving, and then also sound outputting. Sound output section is more used for debugging
-					and ensuring the system works properly. For saving data as a .csv file, do not include .csv
-					to the title as it will include it automatically. Also ensure to make the name .csv file 
+					and ensuring the system works properly. For saving data as a .mat file, do not include .mat
+					to the title as it will include it automatically. Also ensure to make the name .mat file 
 					naming convention friendly (i.e. no '\, /, etc'). This app is also located within the MATLAB 
 					app library as a packaged app. The installer is located in this folder too should it need to
 					be reinstalled. There are multiple versions of this app and the most recent one should be on
@@ -77,20 +87,27 @@ Folders:
 					function for checking if a mic isn't working properly. This outputs 1 graph which is the
 					spectrogram. Defaults at to be -60 to 0 dB power scale.
 		
-		mic_check: 		This is a function that is a helper function for the app and is meant to help the user identify
+		visualize_data:		This is a function that is a helper function for the app and is meant to help the user identify
 					which mics are not working before a test begins. This can be called within command line and can
 					can also be called within app. This is linked to "Mic Check" button in the app. The outputs for 
-					are simply the graphs of the SPL for the microphones within the system. 
+					are simply the graphs of the SPL for the microphones within the system.
+
+		visualize_filtered_data:	This is a function that will filter the data based on a user input center frequency 
+					with a 15% frequency band. This uses a 4th order butterworth bandpass to filter the data. This relies
+					on the visualize_data and filter_data functions which are also within the libraries folder. 
 		
+
 	4. Media -		This folder contains any media that is used in the operation manual or from any tests. This should only be
 				media files. I.e. .mp3 files, .jpeg images, etc. Raw data should be placed within the data folder. 
+
 
 	5. Documentation - 	This folder contains all the documentation that is useful for the acoustics array. Including, the DAQ
 				documentation, the terminal documentation, the microphone documentation, etc.
 
+
 	6. Depreciated - 	All old code from previous years that has been superceded by newer code.
+
 
 	7. Array Procedures - 	This folder contains any instructions on procedures for testing. This is different than the documentation
 				or operation guide. This mainly pertains to safety of the system. 
 			
-				

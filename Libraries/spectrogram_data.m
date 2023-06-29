@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 function spectrogram_data(data,mic_num,time_span)
-=======
-function spectrogram_data(data,mic_num)
->>>>>>> 16afad94250fd75db55ad83c91690aa3b2d4f647
 %
 %   This function will be used to find the spectrogram of the data once a
 %   test has been completed. This will be for finding the resonant
@@ -20,12 +16,7 @@ function spectrogram_data(data,mic_num)
     mic_data = mic_data.final_output_data;
 
 % --Find ind = 1
-<<<<<<< HEAD
     ind = find(mic_data(2:end-1,1) == time_span);
-=======
-    ind = find(mic_data(2:end-1,1) == 2.000);
->>>>>>> 16afad94250fd75db55ad83c91690aa3b2d4f647
-
     fs = 1/(mic_data(4,1) - mic_data(3,1));
 
 % --Pull in data

@@ -16,8 +16,8 @@ function filtered_data = filter_data(test_data,filter_center,Fs)
 %
 
 % --Develop filter band
-    lower_filt = filter_center - 0.15*filter_center;
-    upper_filt = filtere_center + 0.15*filter_center;
+    lower_filt = filter_center - 0.2*filter_center;
+    upper_filt = filter_center + 0.2*filter_center;
     filter_band = [lower_filt upper_filt] ./ (Fs/2);
 
 % --Define filter used

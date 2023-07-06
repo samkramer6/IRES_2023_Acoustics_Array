@@ -8,6 +8,9 @@
     5 July 23
 %}
 
+% --Add path to point to data
+    addpath('C:\Users\FIT UBD\Array Acoustics\Test Data\Validation Data\System Noise Analysis')
+
 % --Setup data
     clc; format compact; close all;
 

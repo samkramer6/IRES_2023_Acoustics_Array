@@ -1,5 +1,25 @@
-data = importdata('C:\Users\Nicholas Rock\Desktop\Brunei Research\7-5 Test\20khz_ring6to1_straight.mat'); 
-qa_test(data,20000,100000)
+% data = importdata('C:\Users\Nicholas Rock\Desktop\Brunei Research\7-5 Test\20khz_ring6to1_straight.mat');
+datatimetable = importdata("Chirps.mat");
+data = datatimetable.Dev1_ai1;
+data = normalize(data, "center", "mean"); % Center data at 0 V
+time = datatimetable.Time;
+peak_windows = get_peak_windows(data, 250000);
+
+figure(1);
+plot(time, data)
+title('7-5 Test')
+xlabel('Time [ms]')
+ylabel('Amplitude [V]')
+grid on;
+hold on;
+
+% for p=1:numel(peak_windows{1}(1))
+%     plot(peak_windows{p,1},peak_windows{p,2})
+% end
+
+plot(peak_windows{1,1}(:,:),peak_windows{1,2}(:,:))
+
+
 
 % % Note that this only works for a stable signal -> Will need to use a fft
 % % and normalize into bins for chirps

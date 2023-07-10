@@ -24,7 +24,7 @@ function trigger_cameras(rate, time_leng, start)
 % --Create square wave
     x = 1:rate*time_leng;
     outputSignal1 = 5.*[heaviside(x - start)]';
-    outputSignal1 = [outputSignal1; zeros(1000,1)];
+    outputSignal1 = [outputSignal1; zeros(10,1)];
     write(NI_daq,outputSignal1)
 
 end

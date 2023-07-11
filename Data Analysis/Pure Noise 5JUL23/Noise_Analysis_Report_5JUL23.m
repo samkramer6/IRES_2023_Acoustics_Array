@@ -8,14 +8,11 @@
     5 July 23
 %}
 
-% --Add path to point to data
-    addpath('C:\Users\FIT UBD\Array Acoustics\Test Data\Validation Data\System Noise Analysis')
-
 % --Setup data
     clc; format compact; close all;
 
 % --Load in data
-    load("Dev1_2.mat");
+    load("C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\System Noise Analysis 5JUL23\Dev1_2.mat");
 
 % --Reformat data
     time = seconds(Dev1_2.Time);
@@ -148,5 +145,10 @@
         xlabel('Frequency (Hz)')
         ylabel('Amplitude')
         xlim([0 fs/2])
+
+% --Using the filter function
+    filtered_data = filter_data(data,fs);
+    figure()
+    plot(filtered_data)
     
     

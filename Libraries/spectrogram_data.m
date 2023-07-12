@@ -27,10 +27,11 @@ function spectrogram_data(data,mic_num,time_span)
 
 % --Finding Spectrogram
     figure(1)
-    [s,f,t] = spectrogram(data, hamming(1000), 600, [], fs,'yaxis');
+    [s,f,t] = spectrogram(data, hamming(128), 124, [], fs,'yaxis');
         s = 20*log10(abs(s));
         s = s - max(s);
         imagesc(t,f,s)
+        set(gca,"YDir","normal")
         clb = colorbar;
         clim([-60 0])
         title('Spectrogram of Data')

@@ -66,6 +66,7 @@
         s = 20*log10(abs(s));
         s = s - max(s);
         imagesc(t,f,s)
+        set(gca,"YDir","normal")
         clb = colorbar;
         clim([-60 0])
         title('Spectrogram of Data')

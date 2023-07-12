@@ -1,4 +1,4 @@
-function signal = create_chirp(chirp_type, freq_start, freq_end, fs )
+function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, show_chirp, show_spect)
 %{
     This function will be used to create a chirp signal that will be used
     for the advanced filtering of the signals that are returned from the
@@ -8,6 +8,10 @@ function signal = create_chirp(chirp_type, freq_start, freq_end, fs )
                 freq_start  == Start frequency of chirp  (Hz)
                 freq_end    == Ending frequency of chirp (Hz)
                 fs          == Sample frequency (Hz)
+                show_chirp  == option to show chirp boolean
+                show_spect  == option to show spectrogram bool
+                number      == number of chirps
+                
 
     Sam Kramer
     July 11th, 2023
@@ -18,12 +22,37 @@ function signal = create_chirp(chirp_type, freq_start, freq_end, fs )
                       'Type', chirp_type, ...
                       'TargetFrequency', freq_end, ...
                       'InitialFrequency', freq_start,...
-                      'TargetTime', 1, ...
-                      'SweepTime', 1, ...
+                      'TargetTime', number, ...
+                      'SweepTime', number, ...
                       'SamplesPerFrame', fs, ...
                       'SampleRate', fs);
 
 % --Output Signal
     signal = chirp();
+    time = 0:(1/fs):(1 - (1/fs));
+
+% --Show Chirp
+    if show_chirp == "True"
+        figure(1)
+        plot(time, signal)
+            title('Chirp Signal vs. Time')
+            xlabel('Time')
+    end
+
+% --Show Spectrogram
+    if show_spect == "True"
+        figure(2)
+        [s,f,t] = spectrogram(signal, hamming(100), 98, [], fs,'yaxis');
+        s = 20*log10(abs(s));
+        s = s - max(s);
+        imagesc(t,f,s);
+        set(gca,"YDir","normal")
+        clb = colorbar;
+        clim([-60 0])
+        title('Spectrogram of Data')
+        xlabel('Time (s)');
+        ylabel('Frequency (Hz)')
+        clb.Title.String = "Power (dB)";
+    end
 
 end

@@ -66,6 +66,8 @@
     5 July 2023
 %}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% High Pass %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % --First try a O9 Highpass
     wn = 2*50000/fs;
     [B,A] = butter(9,wn,"high");
@@ -107,7 +109,9 @@
         subtitle('FFT of Highpass signal')
         xlim([0 fs/2])
 
-% --Second try at a bandpass filter on the data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BAND PASS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --Create Bandpass
     wn = [(2*50000/fs), (2*175000/fs)];
     [B,A] = butter(4,wn,"Bandpass");
 
@@ -146,9 +150,19 @@
         ylabel('Amplitude')
         xlim([0 fs/2])
 
-% --Using the filter function
-    filtered_data = filter_data(data,fs);
-    figure()
-    plot(filtered_data)
+% --Finding a spectrogram of the bandpass data
+     figure(6)
+    [s,f,t] = spectrogram(filterd_data, hamming(128), 124, [], fs,'yaxis');
+        s = 20*log10(abs(s));
+        s = s - max(s);
+        imagesc(t,f,s)
+        set(gca,"YDir","normal")
+        clb = colorbar;
+        clim([-60 0])
+        title('Spectrogram of Bandpass Filtered Data')
+        xlabel('Time (s)');
+        ylabel('Frequency (Hz)')
+        clb.Title.String = "Power (dB)";
+        set(gca, 'YDir','reverse')
     
     

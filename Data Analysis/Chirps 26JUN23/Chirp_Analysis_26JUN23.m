@@ -2,7 +2,7 @@
     clear; clc; format compact; close all;
 
 % --Load data
-    load('Chirps.mat');
+    load('C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\Testing 26JUN23\Chirps.mat');
 
 % --Reformat data
     data = Dev1_3.Dev1_ai1;
@@ -66,11 +66,10 @@
         s = 20*log10(abs(s));
         s = s - max(s);
         imagesc(t,f,s)
-        set(gca,"YDir","normal")
         clb = colorbar;
         clim([-60 0])
+        set(gca,"YDir","normal")
         title('Spectrogram of Data')
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
         clb.Title.String = "Power (dB)";
-        set(gca, 'YDir','reverse')

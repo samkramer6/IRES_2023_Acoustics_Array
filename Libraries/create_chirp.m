@@ -1,4 +1,4 @@
-function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, show_chirp, show_spect)
+function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, show_spect)
 %{
     This function will be used to create a chirp signal that will be used
     for the advanced filtering of the signals that are returned from the
@@ -29,15 +29,6 @@ function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, sho
 
 % --Output Signal
     signal = chirp();
-    time = 0:(1/fs):(1 - (1/fs));
-
-% --Show Chirp
-    if show_chirp == "True"
-        figure(1)
-        plot(time, signal)
-            title('Chirp Signal vs. Time')
-            xlabel('Time')
-    end
 
 % --Show Spectrogram
     if show_spect == "True"

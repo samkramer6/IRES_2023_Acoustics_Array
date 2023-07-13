@@ -9,7 +9,7 @@
 %}
 
 % --Setup data
-    clc; format compact; close all;
+   clear; clc; format compact; close all;
 
 % --Load in data
     load("C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\System Noise Analysis 5JUL23\Dev1_2.mat");
@@ -152,7 +152,7 @@
 
 % --Finding a spectrogram of the bandpass data
      figure(6)
-    [s,f,t] = spectrogram(filterd_data, hamming(128), 124, [], fs,'yaxis');
+    [s,f,t] = spectrogram(filtered_data, hamming(128), 124, [], fs,'yaxis');
         s = 20*log10(abs(s));
         s = s - max(s);
         imagesc(t,f,s)
@@ -165,4 +165,4 @@
         clb.Title.String = "Power (dB)";
         set(gca, 'YDir','reverse')
     
-    
+   

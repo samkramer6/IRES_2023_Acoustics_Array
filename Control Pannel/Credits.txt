@@ -50,6 +50,32 @@ Teams
 		Putri (Biology, UBD)
 		Syafiie (Biology, UBD)
 
+Thank you to all those who took part in the project as high school
+and college interns. Thank you to those professors who helped guide
+the project while Rolf was frequently absent. Thank you to Dr. Hong
+for help with the ML model. Thank you to Dr. Ulmar for the bat
+handling and catching. Thank you to Dr. Leonessa for all the signals
+help in the beginning of the project.
 
-
+───────▄▀▀▀▀▀▀▀▀▀▀▄▄
+────▄▀▀░░░░░░░░░░░░░▀▄
+──▄▀░░░░░░░░░░░░░░░░░░▀▄
+──█░░░░░░░░░░░░░░░░░░░░░▀▄
+─▐▌░░░░░░░░▄▄▄▄▄▄▄░░░░░░░▐▌
+─█░░░░░░░░░░░▄▄▄▄░░▀▀▀▀▀░░█
+▐▌░░░░░░░▀▀▀▀░░░░░▀▀▀▀▀░░░▐▌
+█░░░░░░░░░▄▄▀▀▀▀▀░░░░▀▀▀▀▄░█
+█░░░░░░░░░░░░░░░░▀░░░▐░░░░░▐▌
+▐▌░░░░░░░░░▐▀▀██▄░░░░░░▄▄▄░▐▌
+─█░░░░░░░░░░░▀▀▀░░░░░░▀▀██░░█
+─▐▌░░░░▄░░░░░░░░░░░░░▌░░░░░░█
+──▐▌░░▐░░░░░░░░░░░░░░▀▄░░░░░█
+───█░░░▌░░░░░░░░▐▀░░░░▄▀░░░▐▌
+───▐▌░░▀▄░░░░░░░░▀░▀░▀▀░░░▄▀
+───▐▌░░▐▀▄░░░░░░░░░░░░░░░░█
+───▐▌░░░▌░▀▄░░░░▀▀▀▀▀▀░░░█
+───█░░░▀░░░░▀▄░░░░░░░░░░▄▀
+──▐▌░░░░░░░░░░▀▄░░░░░░▄▀
+─▄▀░░░▄▀░░░░░░░░▀▀▀▀█▀
+▀░░░▄▀░░░░░░░░░░▀░░░▀▀▀▀▄▄▄▄▄
 	

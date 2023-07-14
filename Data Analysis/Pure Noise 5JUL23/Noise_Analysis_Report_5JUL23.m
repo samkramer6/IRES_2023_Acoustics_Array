@@ -163,6 +163,5 @@
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
         clb.Title.String = "Power (dB)";
-        set(gca, 'YDir','reverse')
     
    

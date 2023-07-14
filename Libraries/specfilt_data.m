@@ -1,14 +1,14 @@
-function spectrogram_data(data,mic_num,time_start,time_end)
+function specfilt_data(data,mic_num,time_start,time_end)
 %
 %   This function will be used to find the spectrogram of the data once a
-%   test has been completed. This will be for finding the resonant
-%   frequencies of the microphone data and confirming there is no noise
-%   pollution into the data.
+%   test has been completed. This will filter out noise from the system and
+%   will be able to analyze tests properly to find chirp data. This has set
+%   filter settings that cannot be changed unless the code is adjusted.
 %
 %   Sam Kramer
-%   June 16th, 2023
+%   July 14th, 
 %   
-%   See also mic_check, and background_noise_test
+%   See also filter_data, spectrogram_data
 %
 
 % --Load in data
@@ -26,9 +26,12 @@ function spectrogram_data(data,mic_num,time_start,time_end)
 
     data = data - mean(data);
 
+% --Filter data
+    filtered_data = filter_data(data,fs,80000,0.25,"False");
+
 % --Finding Spectrogram
     figure()
-    [s,f,t] = spectrogram(data, hamming(128), 124, [], fs,'yaxis');
+    [s,f,t] = spectrogram(filtered_data, hamming(128), 124, [], fs,'yaxis');
         t = time_start:(1/length(t)):time_end;
         s = 20*log10(abs(s));
         s = s - max(s);

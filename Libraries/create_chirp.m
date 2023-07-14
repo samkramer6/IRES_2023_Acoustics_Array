@@ -1,4 +1,4 @@
-function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, show_spect)
+function signal = create_chirp(chirp_type, number, length, freq_start, freq_end, fs, show_spect)
 %{
     This function will be used to create a chirp signal that will be used
     for the advanced filtering of the signals that are returned from the
@@ -10,7 +10,7 @@ function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, sho
                 fs          == Sample frequency (Hz)
                 show_chirp  == option to show chirp boolean
                 show_spect  == option to show spectrogram bool
-                number      == number of chirps
+                number      == number of chirps per second
                 
 
     Sam Kramer
@@ -18,13 +18,14 @@ function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, sho
 %}
 
 % --Call on the dsp.chirp function
+    number = 1/number;
     chirp = dsp.Chirp('SweepDirection', 'Unidirectional', ...
                       'Type', chirp_type, ...
                       'TargetFrequency', freq_end, ...
                       'InitialFrequency', freq_start,...
                       'TargetTime', number, ...
                       'SweepTime', number, ...
-                      'SamplesPerFrame', fs, ...
+                      'SamplesPerFrame', length*fs, ...
                       'SampleRate', fs);
 
 % --Output Signal
@@ -40,7 +41,7 @@ function signal = create_chirp(chirp_type, number, freq_start, freq_end, fs, sho
         set(gca,"YDir","normal")
         clb = colorbar;
         clim([-60 0])
-        title('Spectrogram of Data')
+        title('Spectrogram of Sample Chirp')
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
         clb.Title.String = "Power (dB)";

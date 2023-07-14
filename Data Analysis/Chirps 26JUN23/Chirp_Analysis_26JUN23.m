@@ -9,10 +9,10 @@
     time = seconds(Dev1_3.Time);
 
 % --Crop data length
-    data = data(290000:end,1);
-    data = data(21000:23000,1);
-    time = time(290000:end,1);
-    time = time(21000:22500,1);
+%     data = data(290000:end,1);
+%     data = data(21000:23000,1);
+%     time = time(290000:end,1);
+%     time = time(21000:22500,1);
 
 % --Zero_mean
     data = data - mean(data);

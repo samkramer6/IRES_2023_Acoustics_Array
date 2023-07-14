@@ -1,0 +1,55 @@
+Array Credits!!
+
+░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░
+░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
+░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░
+░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░
+░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░
+█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█
+█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░
+░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░
+░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░
+░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░
+░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░
+░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░
+░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░
+░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░
+
+The array was built in part by the 2022 and 2023 IRES teams and
+the buddies who helped throughout the summer. 
+
+Special thanks to Ming Cafe in Miri for keeping team morale high
+and helping us get through our summer. We could not have done it
+without you.
+
+Teams
+	Acoustics:
+		Nick Rock (Physics, URI)
+		Sam Kramer (MechE, VT)
+			
+	Cameras:
+		Crystal Fowler (BioE, Cornell)
+		Yohan Sequeira (MechE, VT)
+		Chi Nnoka (Aero, Buffalo)
+		Udhaya (MechE, NUS)
+		BiBi (Math, UBD)
+
+	SonarBot:
+		Maggie Zhang (MechE, UMich)
+		Phillip Parisi (OceanE, URI)
+		Danny Yessayan (MechE, Columbia)
+		Syirin (CS, UBD)
+
+	FlightBot:
+		Jared Shing (MechE, UDub)
+		Jungsoo Park (MechE, VT)
+
+	Biology:
+		Paige Harman (Biology, NMSU)
+		Putri (Biology, UBD)
+		Syafiie (Biology, UBD)
+
+
+
+	

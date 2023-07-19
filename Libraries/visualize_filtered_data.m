@@ -1,8 +1,9 @@
-function visualize_filtered_data(test_data,t_span,filter_center,Fs)
+function visualize_filtered_data(test_data,t_span,filter_center)
 %
 %   This function is used to visualize the data with an additional filter
 %   on top of the data. This will use the other two functions that have
-%   been written to visualize the data. 
+%   been written to visualize the data. Compatible with the Array Control
+%   Pannel only. Do not use with the array acoustics app data. 
 %
 %   Inputs: test_data -- This is the raw test data to be input
 %           t_span  -- This is the time span for the test view window
@@ -17,13 +18,13 @@ function visualize_filtered_data(test_data,t_span,filter_center,Fs)
 %   See also visualize_data, and filter_data
 
 % --Load in data from background noise test
-    data = load(test_data);
-    data = data.final_output_data;
+    load(test_data);
 
 % --Select 1 second of data
-    time = data(:,1);
-    index = find(time(2:end-1) == t_span);
-    data = data(2:index,2:end);
+    time = final_output_data(:,1);
+    fs = 1/(time(10) - time(9));
+    index = round(fs*t_span);
+    data = final_output_data(2:index,2:width(final_output_data));
     time = time(2:length(data)+1);
 
 % --Plot data in successive figures
@@ -34,16 +35,16 @@ function visualize_filtered_data(test_data,t_span,filter_center,Fs)
     for i = 1:28    % Subplot Ticker 
 
         % --Zero mean data
-            sdf = data(:,k);
-            sdf = sdf - mean(sdf);
+            zmd = data(:,k);
+            zmd = zmd - mean(zmd);
 
         % --Filter data
-            sdf = filter_data(sdf,filter_center,Fs);
+            zmd = filter_data(zmd,fs,filter_center,.25,"false");
 
         % --Plot figures
             figure(j)
             subplot(7,2,m)
-            plot(time,sdf)
+            plot(time,zmd)
                 hold on
                 grid on
 

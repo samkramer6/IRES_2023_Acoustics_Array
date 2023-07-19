@@ -1,0 +1,52 @@
+This is a .txt file that will walk you through how to run a successful
+test using the array and what each functionality does. This file will
+be connected to the array control pannel and will pop up when you call
+it from the app. 
+
+Sam Kramer							19JUL23
+
+Starting the app:
+	I am assuming that you have already figured out how to do this
+	because you are looking at this document, but here it is.
+	1. Open MATLAB on the computer
+	2. Go to Apps tab on the top and select the down arrow on the 
+	   far right.
+	3. Go to favorites and select "IRES Array Control App"
+	4. Double click the app and allow it to open
+	5. LET THE SYSTEM INITIALIZE BEFORE DOING ANYTHING ELSE.
+		- The system will not work if the DAW is not already on
+
+Running a test:
+	1. Put in all the parameters you would like (i.e., change the
+	trigger voltage, the test length, test delay, and sample rate).
+	Go to the Cameras Tab and click visualize trigger to confirm the 
+	test will run how you want it to.
+	2. Click start test, observe the green light change to indicate
+	data collection has begun.
+	3. Allow the test to end.
+	4. Go to the Acoustics tab in the app and click visualize data.
+	The system should plot the data to show the data collected by
+	the system. 
+	5. If you are happy with the data, go to the acoustics tab and
+	then change the title. DO NOT INCLUDE SPACES. Click save data.
+	6. View that the data has been saved properly by going into the
+	Array Acoustics folder, going to test data, validation data, and
+	confirming that the data is in the folder named "Testing [date]"
+	7. Update the test log with how the test went. This is for 
+	continuitity's sake.
+
+That should be all for running the test. There are a number of data analysis
+scripts that we could use to analyze the data that you just took. A list of 
+those data sets are below:
+	1. specfilt_data --> 	This is a spectrogram of a certain mic from a 
+				dataset for a defined time period. This has 
+				fixed filter parameters from 40kHz to 120kHz.
+	2. specfilt_data2 -->	This is a spectrogram of a certain mic for a 
+				dataset for a defined time period. This has
+				tuneable filter parameters. 
+	3. filter_data --> 	This filters the data for the user defined range
+	4. Analyze_data --> 	This will fully analyze the data for the user. 
+
+All of these functions are located in the libraries section, I encourage the user
+to read through them all and the documentation located in the ReadMe.txt in the
+main Array Acoustics folder.

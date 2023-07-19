@@ -41,6 +41,7 @@ function specfilt_data2(data_location,mic_num,time_start,time_end,filt_center)
         s = s - max(s);
         imagesc(t,f,s)
         set(gca,"YDir","normal")
+        colormap("jet")
         clb = colorbar;
         clim([-60 0])
         title('Spectrogram of Data')

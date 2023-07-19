@@ -6,7 +6,7 @@
     array that is created by the Batbot from a distance of 0.5 meters.
 
     Sam Kramer
-    July 14th, 2023
+    July 18th, 2023
 %}
 
 % --Setup
@@ -44,7 +44,6 @@
     plot(time,filtered_data)
         xlabel('Time (s)')
         subtitle('Filtered Signal')
-        %ylim([-0.2 0.2])
 
 % --Spectrogram of data
     data_location = 'C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\Testing 18JUL2023\Chirps_2.mat';

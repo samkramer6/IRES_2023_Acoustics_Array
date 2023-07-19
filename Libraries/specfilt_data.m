@@ -41,10 +41,11 @@ function specfilt_data(data_location,mic_num,time_start,time_end)
         imagesc(t,f,s)
         set(gca,"YDir","normal")
         clb = colorbar;
+        colormap("jet")
         clim([-60 0])
-%         title('Spectrogram of Data')
-%         xlabel('Time (s)');
-%         ylabel('Frequency (Hz)')
-%         clb.Title.String = "Power (dB)";
+        title('Filtered Spectrogram of Data')
+        xlabel('Time (s)');
+        ylabel('Frequency (Hz)')
+        clb.Title.String = "Power (dB)";
 
 end

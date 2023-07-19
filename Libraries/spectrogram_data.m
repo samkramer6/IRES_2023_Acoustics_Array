@@ -1,4 +1,4 @@
-function spectrogram_data(data,mic_num,time_start,time_end)
+function spectrogram_data(data_path,mic_num,time_start,time_end)
 %
 %   This function will be used to find the spectrogram of the data once a
 %   test has been completed. This will be for finding the resonant
@@ -12,18 +12,21 @@ function spectrogram_data(data,mic_num,time_start,time_end)
 %
 
 % --Load in data
-    mic_data = load(data);
-    mic_data = mic_data.final_output_data;
+    load(data_path);
+
+% --Reformat data
+    final_output_data = final_output_data(2:end-1,:);
+    mic_data = final_output_data(:,2:width(final_output_data));
+    time = final_output_data(:,1);
+    fs = round(1/(time(10)-time(9)));
 
 % --Find ind = 1
-    ind1 = find(mic_data(2:end-1,1) == time_start);
-    ind2 = find(mic_data(2:end-1,1) == time_end);
-    fs = 1/(mic_data(4,1) - mic_data(3,1));
-
+    ind1 = time_start*fs + 1;
+    ind2 = time_end*fs;
+    
 % --Pull in data
-    mic_num = mic_num + 1;
+    %mic_num = mic_num + 1;
     data = mic_data(ind1:ind2,mic_num);
-
     data = data - mean(data);
 
 % --Finding Spectrogram
@@ -34,11 +37,13 @@ function spectrogram_data(data,mic_num,time_start,time_end)
         s = s - max(s);
         imagesc(t,f,s)
         set(gca,"YDir","normal")
+        colormap('jet')
         clb = colorbar;
         clim([-60 0])
-        title('Spectrogram of Data')
+        title('Unfiltered Spectrogram of Data')
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
         clb.Title.String = "Power (dB)";
+        ylim([40000 120000])
 
 end

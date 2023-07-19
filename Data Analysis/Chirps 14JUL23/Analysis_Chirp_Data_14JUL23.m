@@ -13,7 +13,8 @@
     clear; clc; format compact; close all;
 
 % --Load in data
-    load('C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\Testing 14JUL2023\5kHzto10kHz_ring6to1_straight.mat');
+    data_path = 'C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\Testing 14JUL2023\5kHzto10kHz_ring6to1_straight.mat';
+    load(data_path);
 
 % --Reformat data
     final_output_data = final_output_data(2:end-1,:);
@@ -51,4 +52,8 @@
     specfilt_data2(data_location,14,0,7,7500);
     title('Spectrogram of chirps from 13July2023 Test')
     ylim([0 50000])
+
+% --Unfiltered spectrogram of data
+    spectrogram_data(data_path,30,0,7);
+        ylim([0 50000])
 

@@ -12,7 +12,7 @@
    clear; clc; format compact; close all;
 
 % --Load in data
-    load("C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\System Noise Analysis 5JUL23\Dev1_2.mat");
+    load("C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\System Noise Analysis 5JUL2023\Dev1_2.mat");
 
 % --Reformat data
     time = seconds(Dev1_2.Time);
@@ -140,14 +140,16 @@
     fft_filt_data = fft(filtered_data);
     fft_filt_data_mag = abs(fft_filt_data);
     fft_filt_data_amp = 2*fft_filt_data_mag/length(data);
+    fft_filt_data_db = mag2db(fft_filt_data_mag);
+    fft_filt_data_db = fft_filt_data_db - max(fft_filt_data_db);
 
 % --Plotting DFT of filtered data
     subplot(2,1,2)
-    plot(frequencies,fft_filt_data_amp)
+    plot(frequencies,fft_filt_data_db)
         hold on
         grid on
         xlabel('Frequency (Hz)')
-        ylabel('Amplitude')
+        ylabel('Intensity (dB)')
         xlim([0 fs/2])
 
 % --Finding a spectrogram of the bandpass data

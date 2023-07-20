@@ -56,4 +56,3 @@
 % --Unfiltered spectrogram of data
     spectrogram_data(data_path,30,0,7);
         ylim([0 50000])
-

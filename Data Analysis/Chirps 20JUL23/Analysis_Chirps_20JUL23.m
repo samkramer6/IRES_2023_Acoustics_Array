@@ -15,4 +15,4 @@
 
 % --Call on analyze data function (Trial 1; Chirp 1)
     data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Chirps_1_meter.mat";
-    analyze_data(data_path,32,"false",2.01,2.03)
+    analyze_data(data_path,32,"false",2.01,2.04)

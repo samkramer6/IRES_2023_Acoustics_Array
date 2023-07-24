@@ -13,7 +13,7 @@
     clear; clc; format compact; close all;
 
 % --Load in data
-    load('C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\Testing 18JUL2023\Chirps_2.mat');
+    load('C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 18JUL2023\Chirps_2.mat');
     
 % --Reformat data
     final_output_data = final_output_data(2:end-1,:);
@@ -46,8 +46,8 @@
         subtitle('Filtered Signal')
 
 % --Spectrogram of data
-    data_location = 'C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Validation Data\Testing 18JUL2023\Chirps_2.mat';
-    specfilt_data(data_location,26,2.96,2.975);
+    data_location = 'C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 18JUL2023\Chirps_2.mat';
+    spectrogram_data(data_location,26,2.96,2.975);
     title('Spectrogram of chirps from 13July2023 Test')
 
     

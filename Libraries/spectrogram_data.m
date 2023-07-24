@@ -44,6 +44,6 @@ function spectrogram_data(data_path,mic_num,time_start,time_end)
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
         clb.Title.String = "Power (dB)";
-        ylim([40000 120000])
+        ylim([40000 170000])
 
 end

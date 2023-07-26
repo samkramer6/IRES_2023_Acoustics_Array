@@ -25,7 +25,6 @@ function spectrogram_data(data_path,mic_num,time_start,time_end)
     ind2 = time_end*fs;
     
 % --Pull in data
-    %mic_num = mic_num + 1;
     data = mic_data(ind1:ind2,mic_num);
     data = data - mean(data);
 

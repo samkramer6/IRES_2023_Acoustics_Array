@@ -64,10 +64,13 @@ Folders:
 					package the app again and the shortcut will work for newest version of the app. There is a file
 					on operation that is useful for understanding the control panel app.
 
+		Array_Control_Pannel:	
+
 	
 	3. Libraries - 		This is the functions library that will be used to store all the functions that are going to
 			 	to be used for the data acquisition. These functions will mainly be used in the combined 
-				camera and acoustics app. They also appear within the acoustics control pannel app.
+				camera and acoustics app. They also appear within the acoustics control pannel app. Please read
+				the independent documentation on each one that is provided in the function file. 
 
 		Functions Files:
 
@@ -92,9 +95,33 @@ Folders:
 					can also be called within app. This is linked to "Mic Check" button in the app. The outputs for 
 					are simply the graphs of the SPL for the microphones within the system.
 
-		visualize_filtered_data:	This is a function that will filter the data based on a user input center frequency 
+		filter_data: 		This function simply filters out the data for the user to remove any noise in the system. This uses
+					a 9th order bandpass filter with the user defined frequency band.
+
+		visualize_filtered_data:This is a function that will filter the data based on a user input center frequency 
 					with a 15% frequency band. This uses a 4th order butterworth bandpass to filter the data. This relies
 					on the visualize_data and filter_data functions which are also within the libraries folder. 
+		
+		trigger_cameras:	This is a function that will be used to trigger the camera system as well as collect mic data 
+					simultaneously from the array. This is mainly a template for the commands used in the app.
+
+		crosscorrelation:	This is a function that takes a cross correlation of two separate datasets for analyzing data for
+					any echoes or any chirps. This can help the team identify where there are chirps in the datasets.
+
+		create_chirp:		This is a function that can be used to create a vector of data points that have a swept frequency
+					cosine, otherwise known as a chirp. This takes in a variety of user defined parameters. This is for
+					data analysis and using the cross correlation function to identify chirps in the data.
+
+		spectrogram_data	This function will take in the entire dataset and then take a spectrogram of the data you pass to it.
+
+		specfilt_data		This function takes in data and filters it and then takes the spectrogram. This has set filter 
+					parameters that match what the batbot outputs from the system.
+
+		specfilt_data2 		this function takes in the data and filters it and provides a spectrogram. This is a user defined
+					filter system and the user must tune the filters themselves.
+
+		analyze_data 		This function can help make the first basic steps to analyzing the collected data. This is meant 
+					to remove alot of the coding aspects in creating analysis scripts.
 		
 
 	4. Media -		This folder contains any media that is used in the operation manual or from any tests. This should only be

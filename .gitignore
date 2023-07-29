@@ -30,6 +30,10 @@ codegen/
 # Octave session info
 octave-workspace
 
+# Figs
+*.fig
+*.mat
+
 # --Folders to be ignored
 Array Procedures and Code
 Depreciated

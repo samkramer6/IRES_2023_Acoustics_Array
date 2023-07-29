@@ -2,7 +2,9 @@ function visualize_data(test_data, t_span)
 %
 %   This function is used to test all the microphones to see if they are
 %   working or not before a test is completed. Can be used to check data
-%   from microphones as well.
+%   from microphones as well. Designed for use with the Array Control
+%   Pannel app. The dataset is output in a specific way that this app
+%   handles. 
 %
 %   Inputs: test_data -- This is the raw test data to be input
 %           t_span  -- This is the time span for the test view window
@@ -15,13 +17,13 @@ function visualize_data(test_data, t_span)
 %   See also background_noise_test, save_daq_data, and add_daq_channels
 
 % --Load in data from background noise test
-    data = load(test_data);
-    data = data.final_output_data;
+    load(test_data);
 
 % --Select 1 second of data
-    time = data(:,1);
-    index = find(time(2:end-1) == t_span);
-    data = data(2:index,2:end);
+    time = final_output_data(:,1);
+    fs = 1/(time(10) - time(9));
+    index = round(fs*t_span);
+    data = final_output_data(2:index,2:width(final_output_data));
     time = time(2:length(data)+1);
 
 % --Plot data in successive figures

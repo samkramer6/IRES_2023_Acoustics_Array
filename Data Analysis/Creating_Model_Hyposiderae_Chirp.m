@@ -53,7 +53,7 @@
     envelope = normpdf(x,0.0015,0.001)./400;
     CF_wave = 0.01.*envelope.*sin(wn.*x);
 %%
-    FM_chirp = create_chirp("Linear",1/.005,0.005,120000,100000,500000,"true");
+    FM_chirp = create_chirp("Linear",1,1,120000,100000,500000,"true");
 
 %% --Convolve first two chirps
     

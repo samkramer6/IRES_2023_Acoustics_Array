@@ -12,18 +12,14 @@ function analyze_data(data_path, mic_number, entire_set, t_start, t_end,f_center
 %   See also visualize_data, specfilt_data, and filter_data
 
 % --Load in data
-    load(data_path);
+    [data,time,fs] = load_data(data_path);
 
-% --Reformat data
-    final_output_data = final_output_data(2:end-1,:);
-    data = final_output_data(:,2:end);
-    time = final_output_data(:,1);
-    fs = round(1/(time(10)-time(9)));
+% --Pick out single mic
+    data = data(:,mic_num);
 
 % --Visualize entire dataset
     if entire_set == "true"
         visualize_data(data_path,max(time))
-        visualize_filtered_data(data_path,max(time),80000)
     end
 
 % --Look at single mic dataset

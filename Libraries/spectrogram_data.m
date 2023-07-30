@@ -18,6 +18,10 @@ function spectrogram_data(data_path,mic_num,time_start,time_end)
     data = data(:,mic_num);
 
 % --Finding Spectrogram
-    spectrogram_function(data,fs,time_start,time_end)
+    try
+        spectrogram_function(data,fs,time_start,time_end)
+    catch
+        disp("Could not create spectrogram")
+    end
 
 end

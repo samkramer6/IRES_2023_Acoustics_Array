@@ -10,9 +10,15 @@ function [data,time,fs] = load_data(data_path)
 
 % --Load in data from data path
     try
-        load(data_path)
+        load(data_path);
     catch
         fprintf("Data could not load properly, make sure path is correct \n")
+    end
+
+% --If data is a time table
+    if class(final_output_data) == "timetable"
+        fprintf("This function does not work on timetable objects\n")
+        fprintf("Try using a load_time_table function\n")
     end
 
 % --Fomat and output data

@@ -35,13 +35,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MIC 32 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% --First Chirp Isolated
+%% --First Chirp Isolated
     spectrogram_data(data_path,32,2.948,2.96)
 
-% --Another Isolated
+%% --Another Isolated
     spectrogram_data(data_path,32,2.93,2.94)
 
-% --Another Isolated
+%% --Another Isolated
     spectrogram_data(data_path,32,2.445,2.455)
 
 % --Another Isolated
@@ -83,3 +83,8 @@
 
 % --Filter out the model chirp
     filtered_model_chirp = filter_data(model_chirp,fs,120000,0.2,"false");
+
+%%
+%for i = 2.9:0.002:3
+        spectrogram_function(mic_data(:,32),fs,2.948,2.96);
+%end

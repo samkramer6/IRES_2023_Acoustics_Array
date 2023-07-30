@@ -2,10 +2,20 @@ function spectrogram_function(data, fs, time_start, time_end)
 %
 %   This is a helper function that is only for spectrogramming a single
 %   vector. This is used to save the settings for spectrograms and helps
-%   the spectrogram_data, specfilt_data, spectfilt_data2 functions.
+%   the spectrogram_data, specfilt_data, specfilt_data2 functions.
 %
 %   Sam Kramer
 %   July 28th, 2023
+%
+%   See also spectrogram_data, specfilt_data, and specfilt_data2.
+
+% --Find ind = 1
+    ind1 = time_start*fs + 1;
+    ind2 = time_end*fs;
+    
+% --Pull in data
+    data = data(ind1:ind2);
+    data = data - mean(data);
 
 % --Create Spectrogram
     figure()

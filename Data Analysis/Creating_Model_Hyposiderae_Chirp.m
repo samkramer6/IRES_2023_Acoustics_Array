@@ -11,20 +11,20 @@
 
 % --Data path and setup
     clear; clc; close all; format compact; warning off;
-    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat_Trial_2";
+    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat1_Trial2_20JUL2023";
 
 % --Pulling out the data to create a "Model Chirp" from best chirp
     [mic_data,~,fs] = load_data(data_path);
 
 % --Model chirp 1
     model_chirp1 = mic_data(2.953*fs:2.96*fs,32);
-    filtered_model_chirp1 = filter_data(model_chirp1,fs,120000,0.2,"false");
+    filtered_model_chirp1 = filter_data(model_chirp1,fs,110000,0.1,"false");
     figure()
     plot(filtered_model_chirp1)
 
 % --Model chirp 2
     model_chirp2 = mic_data(3.125*fs:3.132*fs,26);
-    filtered_model_chirp2 = filter_data(model_chirp2,fs,120000,0.2,"false");
+    filtered_model_chirp2 = filter_data(model_chirp2,fs,110000,0.1,"false");
     figure()
     plot(filtered_model_chirp2)
 
@@ -52,31 +52,31 @@
     wn = f*2*pi;
     envelope = normpdf(x,0.0015,0.001)./400;
     CF_wave = 0.01.*envelope.*sin(wn.*x);
-
-    FM_wave = create_chirp("Linear",1/.005,0.005,120000,100000,500000,"True");
-    FM_wave = 0.01.*envelope.*[FM_wave; 0]';
-
+%%
+    FM_chirp = create_chirp("Linear",1/.005,0.005,120000,100000,500000,"true");
 
 %% --Convolve first two chirps
+    
     convolved_chirp = conv(filtered_model_chirp1,filtered_model_chirp2);
-    figure()
-    plot(convolved_chirp)
+    convolved_chirp = 2*convolved_chirp(1500:5000);
+%     figure()
+%     plot(convolved_chirp)
 
-    figure()
-    [s,f,t] = spectrogram(CFFM_wave, hamming(128), 124, [], fs,'yaxis');
-        %t = time_start:(1/length(t)):time_end;
-        s = 20*log10(abs(s));
-        s = s - max(s);
-        imagesc(t,f,s)
-        set(gca,"YDir","normal")
-        colormap('jet')
-        clb = colorbar;
-        clim([-60 0])
-        title('Unfiltered Spectrogram of Data')
-        xlabel('Time (s)');
-        ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (dB)";
-        ylim([40000 170000])
+% --Convolving two more chirps
+    convolved_chirp2 = conv(filtered_model_chirp3,filtered_model_chirp1);
+    convolved_chirp2 = convolved_chirp2(2000:5500);
+%     figure()
+%     plot(convolved_chirp2)
+
+% --Final convolved chirp
+    model_chirp = 2*conv(convolved_chirp,convolved_chirp2);
+%     figure()
+%     plot(model_chirp)
+
+%%
+    spectrogram_function(convolved_chirp,fs,[],[])
+
+
 
 
 

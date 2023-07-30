@@ -33,19 +33,6 @@ function specfilt_data(data_location,mic_num,time_start,time_end)
     filtered_data = filter_data(data,fs,80000,0.33,"False");
 
 % --Finding Spectrogram
-    figure()
-    [s,f,t] = spectrogram(filtered_data, hamming(128), 124, [], fs,'yaxis');
-        t = time_start:(1/length(t)):time_end;
-        s = 20*log10(abs(s));
-        s = s - max(s);
-        imagesc(t,f,s)
-        set(gca,"YDir","normal")
-        clb = colorbar;
-        colormap("jet")
-        clim([-60 0])
-        title('Filtered Spectrogram of Data')
-        xlabel('Time (s)');
-        ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (dB)";
-
+    spectrogram_function(filtered_data,fs,time_start,time_end)
+    
 end

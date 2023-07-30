@@ -33,18 +33,7 @@ function signal = create_chirp(chirp_type, number, length, freq_start, freq_end,
 
 % --Show Spectrogram
     if show_spect == "True" || show_spect == "true"
-        figure(2)
-        [s,f,t] = spectrogram(signal, hamming(128), 124, [], fs,'yaxis');
-        s = 20*log10(abs(s));
-        s = s - max(s);
-        imagesc(t,f,s);
-        set(gca,"YDir","normal")
-        clb = colorbar;
-        clim([-60 0])
-        title('Spectrogram of Sample Chirp')
-        xlabel('Time (s)');
-        ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (dB)";
+        spectrogram_function(signal,fs,[],[])   % My own function
     end
 
 end

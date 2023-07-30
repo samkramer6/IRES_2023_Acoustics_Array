@@ -31,7 +31,7 @@
 
 % --Setup
     clear; clc; format compact; close all; warning off;
-    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat_Trial_2";
+    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat1_Trial2_20JUL2023";
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MIC 32 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

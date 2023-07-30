@@ -50,12 +50,9 @@ function analyze_data(data_path, mic_number, entire_set, t_start, t_end,f_center
         xlabel('Time (s)')
         subtitle('Filtered Signal')
         xlim([t_start t_end])
-        
-% --Filtered Spectrogram of data
-    specfilt_data(data_path,26,t_start,t_end);
-    title('Spectrogram of Test Data')
 
 % --Unfiltered Spectrogram of data
     spectrogram_data(data_path,mic_number,t_start,t_end)
+        title("Unfiltered Spectrogram of Test")
 
 end

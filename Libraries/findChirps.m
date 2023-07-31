@@ -1,4 +1,4 @@
-function find_chirps(data_path,mic_num,bat_type)
+function findChirps(data_path,mic_num,bat_type)
 %   
 %   This is a function that will systematically create a spectrogram of the
 %   chirps that are detected from a specific dataset that is passed to the
@@ -30,6 +30,12 @@ function find_chirps(data_path,mic_num,bat_type)
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Time Domain Section %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % --Cross correlate vs. simple FM chirp
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Freq Domain Section %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --
     
 
 

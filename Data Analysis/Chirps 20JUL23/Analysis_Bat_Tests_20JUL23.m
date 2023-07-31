@@ -31,7 +31,7 @@
 
 % --Setup
     clear; clc; format compact; close all; warning off;
-    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat1_Trial2_20JUL2023";
+    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat1_Trial2_20JUL2023.mat";
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MIC 32 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -85,6 +85,6 @@
     filtered_model_chirp = filter_data(model_chirp,fs,120000,0.2,"false");
 
 %%
-%for i = 2.9:0.002:3
-        spectrogram_function(mic_data(:,32),fs,2.948,2.96);
-%end
+for i = 0:0.02:1
+        spectrogram_data(data_path,32,i,i+0.02);
+end

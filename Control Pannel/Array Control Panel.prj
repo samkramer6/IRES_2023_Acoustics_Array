@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3168550057" file="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel\Array Control Panel.prj" location="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel" name="Array Control Panel" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="1494436123" file="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel\Array Control Panel.prj" location="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel" name="Array Control Panel" target="target.mlapps" target-name="Package App">
     <param.appname>Array Control Panel</param.appname>
     <param.authnamewatermark>Sam Kramer</param.authnamewatermark>
     <param.email>samkramer6@vt.edu</param.email>
@@ -8,8 +8,8 @@
     <param.icons />
     <param.summary>This is the control app for the entire IRES array that is run through the DAQ</param.summary>
     <param.description />
-    <param.screenshot>C:\Users\FIT UBD\AppData\Local\Temp\tp23577f8a_7baa_4fee_9fcf_182026c51036.png</param.screenshot>
-    <param.version>1.0</param.version>
+    <param.screenshot>C:\Users\FIT UBD\AppData\Local\Temp\tp169155b7_0919_44aa_add9_091e5db0f031.png</param.screenshot>
+    <param.version>1.1</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />
@@ -21,7 +21,6 @@
       <param.icon />
       <param.icons />
       <param.description />
-      <param.version />
       <param.products.name />
       <param.products.id />
       <param.products.version />
@@ -32,17 +31,15 @@
       <file>${PROJECT_ROOT}\Array_Control_App.mlapp</file>
     </fileset.main>
     <fileset.depfun>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Chirp 440 Hz.wav</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\DTMF Tones.wav</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Mic_Check_App.mlapp</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Nyctalus_leisleri_3_o.wav</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Shaking Keys.mp3</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Tone 440 Hz.mp3</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\UBD logo original.png</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Vertical_VT_Full_Color_RGB.png</file>
-      <file>C:\Users\FIT UBD\AppData\Roaming\MathWorks\MATLAB Add-Ons\Apps\Array_Control_App\Visualize_Output.mlapp</file>
+      <file>${PROJECT_ROOT}\Chirp 440 Hz.wav</file>
+      <file>${PROJECT_ROOT}\DTMF Tones.wav</file>
+      <file>${PROJECT_ROOT}\Mic_Check_App.mlapp</file>
+      <file>${PROJECT_ROOT}\Nyctalus_leisleri_3_o.wav</file>
+      <file>${PROJECT_ROOT}\Shaking Keys.mp3</file>
+      <file>${PROJECT_ROOT}\Tone 440 Hz.mp3</file>
       <file>${PROJECT_ROOT}\UBD logo original.png</file>
       <file>${PROJECT_ROOT}\Vertical_VT_Full_Color_RGB.png</file>
+      <file>${PROJECT_ROOT}\Visualize_Output.mlapp</file>
     </fileset.depfun>
     <fileset.resources />
     <fileset.package />

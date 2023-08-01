@@ -49,6 +49,4 @@ function spectrogram_function(data, fs, time_start, time_end)
         clb.Title.String = "Power (dB)";
         ylim([30000 max(f)])
 
-
-
 end

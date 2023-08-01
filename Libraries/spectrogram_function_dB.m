@@ -1,11 +1,10 @@
-function spectrogram_function(data, fs, time_start, time_end)
+function spectrogram_function_dB(data, fs, time_start, time_end)
 %
 %   This is a helper function that is only for spectrogramming a single
 %   vector. This is used to save the settings for spectrograms and helps
 %   the spectrogram_data, specfilt_data, specfilt_data2 functions. This
-%   will have a relative time section along the x-axis. This is for non-log
-%   scale spectrograms of data. These may be much cleaner than the
-%   log-scale spectrograms.
+%   will have a relative time section along the x-axis. This is the dB
+%   scale 
 %
 %   Sam Kramer
 %   July 28th, 2023
@@ -31,7 +30,8 @@ function spectrogram_function(data, fs, time_start, time_end)
     try
         figure()
         [s,f,t] = spectrogram(data, hamming(300), 290, [], fs,'yaxis');
-            s = abs(s);
+            s = 20*log10(abs(s));
+            s = s - max(s);
     catch
         disp("Could not create spectrogram")
     end
@@ -47,11 +47,11 @@ function spectrogram_function(data, fs, time_start, time_end)
         set(gca,"YDir","normal")
         colormap('jet')
         clb = colorbar;
-        clim([0 1])
+        clim([-60 0])
         title('Unfiltered Spectrogram of Data')
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (Linear)";
+        clb.Title.String = "Power (dB)";
         ylim([30000 max(f)])
 
 end

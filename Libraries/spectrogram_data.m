@@ -19,7 +19,7 @@ function spectrogram_data(data_path,mic_num,time_start,time_end)
 
 % --Finding Spectrogram
     try
-        spectrogram_function(data,fs,time_start,time_end)
+        spectrogram_function_dB(data,fs,time_start,time_end)
     catch
         disp("Could not create spectrogram")
     end

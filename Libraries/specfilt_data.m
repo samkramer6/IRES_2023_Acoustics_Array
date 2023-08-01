@@ -27,6 +27,6 @@ function specfilt_data(data_path,mic_num,time_start,time_end)
     end
 
 % --Finding Spectrogram
-    spectrogram_function(filtered_data,fs,time_start,time_end)
+    spectrogram_function_dB(filtered_data,fs,time_start,time_end)
     
 end

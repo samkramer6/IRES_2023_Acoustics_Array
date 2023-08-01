@@ -53,28 +53,23 @@
     envelope = normpdf(x,0.0015,0.001)./400;
     CF_wave = 0.01.*envelope.*sin(wn.*x);
 %%
-    FM_chirp = create_chirp("Linear",1,1,120000,100000,500000,"true");
+    FM_chirp = create_chirp("Linear",1,0.005,120000,100000,500000,"true");
 
-%% --Convolve first two chirps
+%% Convolve chirps
     
     convolved_chirp = conv(filtered_model_chirp1,filtered_model_chirp2);
-    convolved_chirp = 2*convolved_chirp(1500:5000);
-%     figure()
-%     plot(convolved_chirp)
+    model_chirp = 2*convolved_chirp(1500:5000);
 
-% --Convolving two more chirps
-    convolved_chirp2 = conv(filtered_model_chirp3,filtered_model_chirp1);
-    convolved_chirp2 = convolved_chirp2(2000:5500);
-%     figure()
-%     plot(convolved_chirp2)
+%% Increasing second half power
+    model_chirp((2/3)*length(model_chirp):length(model_chirp)) = 2*model_chirp((2/3)*length(model_chirp):length(model_chirp));
+    disp("done")
+%% Observing the convolved chirps
 
-% --Final convolved chirp
-    model_chirp = 2*conv(convolved_chirp,convolved_chirp2);
-%     figure()
-%     plot(model_chirp)
+    spectrogram_function(model_chirp,fs,0,0.009)
+%% Saving data
 
-%%
-    spectrogram_function(convolved_chirp,fs,[],[])
+save("Hippo_example_chirp.mat","model_chirp")
+
 
 
 

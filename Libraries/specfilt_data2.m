@@ -5,7 +5,7 @@ function specfilt_data2(data_path,mic_num,time_start,time_end,filt_center)
 %   will be able to analyze tests properly to find chirp data. This has set
 %   filter settings aside from the filter center which is an input value.
 %   This can be changed but not the width which is set. This has a width of
-%   0.25.
+%   0.3. This has a linear spectrogram set.
 %       
 %   Sam Kramer
 %   July 14th, 
@@ -21,12 +21,12 @@ function specfilt_data2(data_path,mic_num,time_start,time_end,filt_center)
 
 % --Filter data
     try 
-        filtered_data = filter_data(data,fs,filt_center,0.25,"False");
+        filtered_data = filter_data(data,fs,filt_center,0.3,"False");
     catch
         fprintf("Issue Filtering Data \n");
         filtered_data = data;
     end
 
 % --Finding Spectrogram
-    spectrogram_function_dB(filtered_data,fs,time_start,time_end)
+    spectrogram_function(filtered_data,fs,time_start,time_end)
 end

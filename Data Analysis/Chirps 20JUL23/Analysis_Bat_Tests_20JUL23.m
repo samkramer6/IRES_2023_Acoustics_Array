@@ -85,6 +85,6 @@
     filtered_model_chirp = filter_data(model_chirp,fs,120000,0.2,"false");
 
 %%
-for i = 0:0.02:1
-        spectrogram_data(data_path,32,i,i+0.02);
+for i = 0:0.015:0.5
+        spectrogram_data(data_path,32,i,i+0.02,"linear");
 end

@@ -10,18 +10,20 @@ function spectrogram_function(data, fs, time_start, time_end)
 %
 %   See also spectrogram_data, specfilt_data, and specfilt_data2.
 
-try
-
-    % --Find ind = 1
-        ind1 = time_start*fs + 1;
-        ind2 = time_end*fs;
+% --Manipulate the dataset for the time length
+    try
     
-    % --Pull in data
-        data = data(ind1:ind2);
+        % --Find ind = 1
+            ind1 = time_start*fs + 1;
+            ind2 = time_end*fs;
+        
+        % --Pull in data
+            data = data(ind1:ind2);
+            data = data - mean(data);
+    catch
+        disp("Displaying Whole Time Set")
         data = data - mean(data);
-catch
-    disp("Displaying Whole Time Set")
-end
+    end
 
 % --Create Spectrogram
     figure()
@@ -30,7 +32,10 @@ end
         s = s - max(s);
 
 % --Reformat time
-    t = time_start:(1/length(t)):time_end;
+    try
+        t = time_start:(1/length(t)):time_end;
+    catch
+    end
 
 % --Plot Image and format image
     imagesc(t,f,s)

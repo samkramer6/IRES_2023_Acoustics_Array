@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="1494436123" file="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel\Array Control Panel.prj" location="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel" name="Array Control Panel" target="target.mlapps" target-name="Package App">
+  <configuration build-checksum="4041421919" file="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel\Array Control Panel.prj" location="C:\Users\FIT UBD\Desktop\Array Acoustics\Control Pannel" name="Array Control Panel" target="target.mlapps" target-name="Package App">
     <param.appname>Array Control Panel</param.appname>
     <param.authnamewatermark>Sam Kramer</param.authnamewatermark>
     <param.email>samkramer6@vt.edu</param.email>
@@ -8,8 +8,8 @@
     <param.icons />
     <param.summary>This is the control app for the entire IRES array that is run through the DAQ</param.summary>
     <param.description />
-    <param.screenshot>C:\Users\FIT UBD\AppData\Local\Temp\tp169155b7_0919_44aa_add9_091e5db0f031.png</param.screenshot>
-    <param.version>1.1</param.version>
+    <param.screenshot>C:\Users\FIT UBD\AppData\Local\Temp\tp75c79528_9030_46cf_81c2_d8a4bcc17fa9.png</param.screenshot>
+    <param.version>1.3</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />

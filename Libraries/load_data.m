@@ -17,18 +17,23 @@ function [data,time,fs] = load_data(data_path)
 
 % --If data is a time table
     if class(final_output_data) == "timetable"
-        fprintf("This function does not work on timetable objects\n")
-        fprintf("Try using a load_time_table function\n")
+        try
+            time = acoustic_data.Time;
+            time = seconds(time);
+            data = acoustic_data.Dev1_ai0;
+        catch
+            fprintf("This function does not work on timetable objects\n")
+            fprintf("Try using a load_time_table function\n")
+        end
+    else
+        try 
+            % --Formatting a double array type
+                final_output_data = final_output_data(2:end-1,:);
+                data = final_output_data(:,2:width(final_output_data));
+                time = final_output_data(:,1);
+                fs = round(1/(time(10)-time(9)));
+        catch
+            fprintf("Could not format data properly \n")
+        end
     end
-
-% --Fomat and output data
-    try 
-        final_output_data = final_output_data(2:end-1,:);
-        data = final_output_data(:,2:width(final_output_data));
-        time = final_output_data(:,1);
-        fs = round(1/(time(10)-time(9)));
-    catch
-        fprintf("Could not format data properly \n")
-    end
-
 end

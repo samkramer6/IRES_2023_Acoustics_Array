@@ -16,11 +16,12 @@ function [data,time,fs] = load_data(data_path)
     end
 
 % --If data is a time table
-    if class(final_output_data) == "timetable"
+    if class(acoustic_data) == "timetable"
         try
             time = acoustic_data.Time;
             time = seconds(time);
             data = acoustic_data.Dev1_ai0;
+            fs = round(1/(time(10)-time(9)));
         catch
             fprintf("This function does not work on timetable objects\n")
             fprintf("Try using a load_time_table function\n")

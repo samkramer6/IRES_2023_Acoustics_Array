@@ -11,6 +11,9 @@ function findChirps(data_path,mic_num,bat_type)
 %   July 28th, 2023
 %
 
+% --Confirmation outline
+    disp("Finding Chirps...This may take a few moments.")
+
 %%%%%%%%%%%%%%%%%%%%%%%%%% Selecting Data Type %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % --Load in data
@@ -20,11 +23,12 @@ function findChirps(data_path,mic_num,bat_type)
     data = data(:,mic_num);
 
 % --Select Bat type
-    if bat_type == "Hipposideros" || bat_type == "hipposideros"
-        [hippo_call,~,~] = load_data("C:\Users\FIT UBD\Desktop\Array Acoustics\Libraries\Hippo_example_chirp.mat");
+    bat_type = char(upper(bat_type));
+    if bat_type(1) == 'H'
+        [call,~,~] = load_data("C:\Users\FIT UBD\Desktop\Array Acoustics\Libraries\Hippo_example_chirp.mat");
     else
-        disp("No example chirp selected")
-        disp("Checking only on a linear chirp pattern")
+        disp("Defaulting to Hipposideros Chirp")
+        [call,~,~] = load_data("C:\Users\FIT UBD\Desktop\Array Acoustics\Libraries\Hippo_example_chirp.mat");
     end
 
 % --create linear chirp pattern
@@ -38,7 +42,7 @@ function findChirps(data_path,mic_num,bat_type)
 
 % Ghost Code:
     % --Compare the two time domain signals {Call time_domain_finder()}
-        
+        indeces = time_domain_finder(data,fs,FM_chirp,call);
         
     % --Outline for time domain section
         fprintf("Time Domain Finder Done.\n")

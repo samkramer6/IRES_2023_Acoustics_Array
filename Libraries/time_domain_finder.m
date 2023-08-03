@@ -1,4 +1,4 @@
-function time_domain_finder(data,fs,FM_chirp,CFFM_chirp)
+function indeces = time_domain_finder(data,fs,FM_chirp,CFFM_chirp)
 %
 %   This function is a helper function for the find chirps algorithm that
 %   is used to analyze the bat data to find the chirps that have been
@@ -29,14 +29,25 @@ function time_domain_finder(data,fs,FM_chirp,CFFM_chirp)
     disp(length(CFFM_corr))
 
 % --Reformat data to find just the single sided cross correlation
-    
+    CFFM_corr = CFFM_corr(length(CFFM_corr)/2:length(CFFM_corr));
+    FM_corr = FM_corr(length(FM_corr)/2:length(FM_corr));
 
 % --Develop peak threshold criteria
-
+    
 
 % --Find peaks of both correlations
+    [CF_peaks,CF_ind] = findpeaks(CFFM_corr);     % ADD MIN PEAK HEIGHT
+    [FM_peaks,FM_ind] = findpeaks(FM_corr);       % ADD MIN PEAK HEIGHT
 
+    % --Convert index to time [DELETE AFTER DEVELOPMENT]
+        CF_time = CFFM_lags./fs;
+        FM_time = FM_lags./fs;
+
+% --Plot Both [DELETE AFTER DEVELOPMENT OF FUNCTION]
+    plot(CF_time,CF_peaks);
+    plot(FM_time,FM_peaks);
 
 % --Compare the peaks of both {Calls Comparison Function}
+    %indeces = compare_function(CF_ind,FM_ind);  % indeces::AbstractVector
 
 end

@@ -8,6 +8,9 @@ function [data,time,fs] = load_data(data_path)
 %   Sam Kramer
 %   July 26th, 2023
 
+% --Setup
+    acoustic_data = "data";     % Place holder variable
+
 % --Load in data from data path
     try
         load(data_path);

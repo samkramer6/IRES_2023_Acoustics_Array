@@ -6,6 +6,16 @@ function spectrogram_data(data_path,mic_num,time_start,time_end,type)
 %   pollution into the data. There are options to have it in log or linear
 %   scales
 %
+%   Inputs:     
+%       data_path::AbsStr   ==  The path that points to the dataset
+%       mic_number::Int     ==  The microphone you would like to 
+%                               investigate the data from.
+%       time_start::Float   ==  The time window starting point.
+%       time_end::Float     ==  The time window ending point. Will default
+%                               to whole dataset if left out.
+%       type::AbsStr        ==  The type of scale you would like the
+%                               spectrograms to be in ("Log" or "Linear").
+%
 %   Sam Kramer
 %   June 30th, 2023
 %   
@@ -16,7 +26,12 @@ function spectrogram_data(data_path,mic_num,time_start,time_end,type)
     [data,~,fs] = load_data(data_path);
 
 % --Select microphone of interest
-    data = data(:,mic_num);
+    mic_num = uint8(mic_num);           % Confirms int data type
+    try
+        data = data(:,mic_num);
+    catch
+        disp("Mic does not exist in dataset")
+    end
 
 % --Finding Spectrogram
     type = upper(string(type));

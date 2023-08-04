@@ -7,10 +7,20 @@ function spectrogram_function(data, fs, time_start, time_end)
 %   scale spectrograms of data. These may be much cleaner than the
 %   log-scale spectrograms.
 %
+%   Inputs:     
+%       data_path::AbsStr   ==  The path that points to the dataset
+%       mic_number::Int     ==  The microphone you would like to 
+%                               investigate the data from.
+%       time_start::Float   ==  The time window starting point.
+%       time_end::Float     ==  The time window ending point. Will default
+%                               to whole dataset if left out.
+%
 %   Sam Kramer
 %   July 28th, 2023
 %
 %   See also spectrogram_data, specfilt_data, and specfilt_data2.
+
+% --Setup mic_number properly
 
 % --Manipulate the dataset for the time length
     try
@@ -47,7 +57,7 @@ function spectrogram_function(data, fs, time_start, time_end)
         set(gca,"YDir","normal")
         colormap('jet')
         clb = colorbar;
-        clim([0 1])
+        clim([0 1.5])
         title('Unfiltered Spectrogram of Data')
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')

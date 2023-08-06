@@ -8,6 +8,9 @@ Acoustics Engineering Team lead
 
 Summer 2023
 
+> [!NOTE]
+> This is not the only documentation on the acoustics setup.
+
 ## Files:
 ### 1. Test Log -		
 This is the test log that is for official tests where data acquisition of bat flight is	

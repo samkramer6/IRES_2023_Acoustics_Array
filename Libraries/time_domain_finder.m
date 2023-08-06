@@ -24,28 +24,25 @@ function indeces = time_domain_finder(data,fs,FM_chirp,CFFM_chirp)
 % --Cross correlate vs. example CFFM chirp
     [CFFM_corr, CFFM_lags] = xcorr(filtered_data, CFFM_chirp);
 
-% --Check to see if the two are the same length [DELETE AFTER DEVELOPMENT]
-    disp(length(FM_corr))
-    disp(length(CFFM_corr))
-
 % --Reformat data to find just the single sided cross correlation
     CFFM_corr = CFFM_corr(length(CFFM_corr)/2:length(CFFM_corr));
     FM_corr = FM_corr(length(FM_corr)/2:length(FM_corr));
 
 % --Develop peak threshold criteria
+    CF_thresh = mean(abs(CFFM_corr));
+    FM_thresh = mean(abs(FM_corr));
     
-
 % --Find peaks of both correlations
-    [CF_peaks,CF_ind] = findpeaks(CFFM_corr);     % ADD MIN PEAK HEIGHT
-    [FM_peaks,FM_ind] = findpeaks(FM_corr);       % ADD MIN PEAK HEIGHT
+    [CF_peaks,CF_ind] = findpeaks(CFFM_corr,'MinPeakHeight',CF_thresh);     
+    [FM_peaks,FM_ind] = findpeaks(FM_corr,'MinPeakHeight',FM_thresh);
 
     % --Convert index to time [DELETE AFTER DEVELOPMENT]
         CF_time = CFFM_lags./fs;
         FM_time = FM_lags./fs;
 
-% --Plot Both [DELETE AFTER DEVELOPMENT OF FUNCTION]
-    plot(CF_time,CF_peaks);
-    plot(FM_time,FM_peaks);
+    % --Plot Both [DELETE AFTER DEVELOPMENT OF FUNCTION]
+        plot(CF_time,CF_peaks);
+        plot(FM_time,FM_peaks);
 
 % --Compare the peaks of both {Calls Comparison Function}
     %indeces = compare_function(CF_ind,FM_ind);  % indeces::AbstractVector

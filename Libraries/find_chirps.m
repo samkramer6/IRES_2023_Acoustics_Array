@@ -23,7 +23,7 @@ function find_chirps(data_path,mic_num,bat_type)
 % --Select Bat type
     try
         if bat_type == "Hipposideros" || bat_type == "hipposideros"
-            hippo_call = load("C:\Users\FIT UBD\Desktop\Array Acoustics\Libraries\Hippo_example_chirp.mat");
+            hippo_call = load("Hippo_example_chirp.mat");
             hippo_call = hipp_call.model_chirp;
         end
     catch
@@ -42,7 +42,7 @@ function find_chirps(data_path,mic_num,bat_type)
 
 % Ghost Code:
     % --Compare the two time domain signals {Call time_domain_finder()}
-        
+        indeces = time_domain_finder(data,fs,FM_chirp,hippo_call);
         
     % --Outline for time domain section
         fprintf("Time Domain Finder Done.\n")

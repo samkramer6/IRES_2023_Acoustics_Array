@@ -62,7 +62,10 @@ that will work with the cameras during tests. To run just acoustics array tests,
 camera toggle in the top right corner. To visualize the acoustic data you have collected you may click
 the visualize data button in the acoustics control page.
 	
-### 3. Libraries - 		
+### 3. Libraries - 	
+>[!NOTE]
+>There is individual, in-depth documentation for each function within the function file. Type `>>help func_name` in command window to see documentation.
+
 This is the functions library that will be used to store all the functions that are going to
 to be used for the data acquisition. These functions will mainly be used in the combined 
 camera and acoustics app. They also appear within the acoustics control pannel app. Please read

@@ -1,71 +1,73 @@
+# Acoustics Array ReadMe.md
 This is the readme.md file for the 2023 IRES acoustics work. It will include documentation about the folders 
 and what is in each folder. 
 
-	Sam Kramer
-	Acoustics Engineering Team lead
-	Summer 2023
+Sam Kramer
+Acoustics Engineering Team lead
+Summer 2023
 
 ## Files:
-	1. Test Log -		This is the test log that is for official tests where data acquisition of bat flight is	
-				the main goal. Tests to validate system will also be logged and should be done regularly
-				to prevent degradation of system capabilities. Any mics not working or problematic will be
-				noted within the test log notes. Note every test, including validation tests.
+1. Test Log -		This is the test log that is for official tests where data acquisition of bat flight is	
+			the main goal. Tests to validate system will also be logged and should be done regularly
+			to prevent degradation of system capabilities. Any mics not working or problematic will be
+			noted within the test log notes. Note every test, including validation tests.
 
-	2. Operation Manual -	This is the MATLAB live script that is the operation manual for the entire acoustics array
-				and is executeable within the IDE. If the DAQ is connected and setup properly the live script
-				will run the code and collect data. This is meant as an example for the data collection system
-				that is programmed into the app. The user is able to read through what the app is doing and then
-				also able to see what each line does. The operation manual also lists a cheat-sheet for the analog
-				inputs of the microphones for troubleshooting. The operations for the microphones and a debugging 
-				guide is also available within this document. It is highly encouraged to read through this document
-				before any major engineering is done to system. A majority of technical documentation is located
-				here.
+2. Operation Manual -	This is the MATLAB live script that is the operation manual for the entire acoustics array
+			and is executeable within the IDE. If the DAQ is connected and setup properly the live script
+			will run the code and collect data. This is meant as an example for the data collection system
+			that is programmed into the app. The user is able to read through what the app is doing and then
+			also able to see what each line does. The operation manual also lists a cheat-sheet for the analog
+			inputs of the microphones for troubleshooting. The operations for the microphones and a debugging 
+			guide is also available within this document. It is highly encouraged to read through this document
+			before any major engineering is done to system. A majority of technical documentation is located
+			here.
 
-	3. Folder Guide -	This is a PNG file that shows the tree folder order within the Acoustics Array folder. This should 
-				be taken as a user guide for the location of the different folders if they are searching for a
-				specific data set or folder. If there is some sort of restructuring, this should be updated. This is NOT 
-				included in the github and is noted on the .gitignore, only located on drive and locally on lab.
+3. Folder Guide -	This is a PNG file that shows the tree folder order within the Acoustics Array folder. This should 
+			be taken as a user guide for the location of the different folders if they are searching for a
+			specific data set or folder. If there is some sort of restructuring, this should be updated. This is NOT 
+			included in the github and is noted on the .gitignore, only located on drive and locally on lab.
 
-	4. .gitignore -		The gitignore file is a tool for the acoustics github. This file includes all the files on the lab
-				computer's HDD that are not needed on the github. This includes files like the data, documentation, and 
-				media. These are not needed on github becuase the drive is better suited for the saving and sharing of these
-				files.
+4. .gitignore -		The gitignore file is a tool for the acoustics github. This file includes all the files on the lab
+			computer's HDD that are not needed on the github. This includes files like the data, documentation, and 
+			media. These are not needed on github becuase the drive is better suited for the saving and sharing of these
+			files.
 
 ## Folders:
-	1. Test Data -		This is the folder that holds all the test data that was collected by the acoustics array.
-				This holds all raw data files in the form of .mat files. There are two sub-folders one
-				designated for validation data for system, and another for data acquisition from full-speed
-				bat tests. The naming convention for the test files is [TYPE][DATE-GROUP] i.e. Validation 22JUN23.
+1. Test Data -		This is the folder that holds all the test data that was collected by the acoustics array.
+			This holds all raw data files in the form of .mat files. There are two sub-folders one
+			designated for validation data for system, and another for data acquisition from full-speed
+			bat tests. The naming convention for the test files is [TYPE][DATE-GROUP] i.e. Validation 22JUN23.
 
-		Bat Test Data:		This folder holds all the bat test data, and there are sub folders for each test that
-					is completed. Each test should include the date that the test occured. Update the test log after
-					each test that is completed.
+2. Control Pannel - 	This is the folder that will store the standalone acoustics control pannel. There are other 
+			files that are located here to assist with the app itself. There are audio files with .mp3 
+			and .wav for outputting sound from the app.
 		
-		Validation Data:	This folder holds all validation test data for the array. These validation tests should
-					be repeated regularly to ensure that all mics are still working properly, and to diagnose
-					any new problems. There are also tests that were ran with the batbot as the main sound emitter that
-					should be logged in this folder as well. After each test, update the test log to keep a documented
-					track of the system. This helps with the debugging of the system and with team turnover.
+	### Mic_Control_Pannel (DEPRECIATED):
+				This is a MATLAB app that will be used to setup and collect data from just the acoustics
+				array. This has three different sections relating to data acquisition and then data 
+				saving, and then also sound outputting. Sound output section is more used for debugging
+				and ensuring the system works properly. For saving data as a .mat file, do not include .mat
+				to the title as it will include it automatically. Also ensure to make the name .mat file 
+				naming convention friendly (i.e. no '\, /, etc'). This app is also located within the MATLAB 
+				app library as a packaged app. The installer is located in this folder too should it need to
+				be reinstalled. There are multiple versions of this app and the most recent one should be on
+				the .mlapp file located within this folder. If the app in matlab IDE is not up to date simply
+				package the app again and the shortcut will work for newest version of the app. There is a file
+				on operation that is useful for understanding the control panel app. This file outputs all the
+   				as a timetable object.
 
-
-	2. Control Pannel - 	This is the folder that will store the standalone acoustics control pannel. There are other 
-				files that are located here to assist with the app itself. There are audio files with .mp3 
-				and .wav for outputting sound from the app.
-		
-		Mic_Control_Pannel: 	This is a MATLAB app that will be used to setup and collect data from just the acoustics
-					array. This has three different sections relating to data acquisition and then data 
-					saving, and then also sound outputting. Sound output section is more used for debugging
-					and ensuring the system works properly. For saving data as a .mat file, do not include .mat
-					to the title as it will include it automatically. Also ensure to make the name .mat file 
-					naming convention friendly (i.e. no '\, /, etc'). This app is also located within the MATLAB 
-					app library as a packaged app. The installer is located in this folder too should it need to
-					be reinstalled. There are multiple versions of this app and the most recent one should be on
-					the .mlapp file located within this folder. If the app in matlab IDE is not up to date simply
-					package the app again and the shortcut will work for newest version of the app. There is a file
-					on operation that is useful for understanding the control panel app.
-
-		Array_Control_Pannel:	
-
+	### Array_Control_Pannel:
+				This is a MATLAB app that is used to setup and run the entire array from a single computer. This
+   				package was coded in the app designer and is located in the app section of the MAT IDE. You may
+   				also run the app from the top toolbar. This is the preffered method of running the array because
+   				it handles data much better and faster than the mic control pannel. Within this app there are
+   				multiple tabs for different control aspects of the array. The most important parts are the control
+   				page which is used to configure the tests. To change the length of the test time, you may change
+   				the duration box, same goes for the frequency box. There are set presets that will work with the
+   				cameras during tests. To run just acoustics array tests, simply switch off the camera toggle in the
+   				top right corner. To visualize the acoustic data you have collected you may click the visualize data
+   				button in the acoustics control page.
+					
 	
 	3. Libraries - 		This is the functions library that will be used to store all the functions that are going to
 			 	to be used for the data acquisition. These functions will mainly be used in the combined 

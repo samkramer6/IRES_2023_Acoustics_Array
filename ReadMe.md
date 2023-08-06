@@ -1,4 +1,4 @@
-# Acoustics Array ReadMe.md
+# Acoustics Array
 This is the readme file for the 2023 IRES acoustics work. It will include documentation about the folders 
 and what is in each folder. 
 

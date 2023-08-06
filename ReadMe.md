@@ -2,8 +2,8 @@
 This is the readme.md file for the 2023 IRES acoustics work. It will include documentation about the folders 
 and what is in each folder. 
 
-Sam Kramer
-Acoustics Engineering Team lead
+Sam Kramer,
+Acoustics Engineering Team lead,
 Summer 2023
 
 ## Files:
@@ -42,7 +42,7 @@ Summer 2023
 			files that are located here to assist with the app itself. There are audio files with .mp3 
 			and .wav for outputting sound from the app.
 		
-	### Mic_Control_Pannel (DEPRECIATED):
+Mic_Control_Pannel (DEPRECIATED):
 				This is a MATLAB app that will be used to setup and collect data from just the acoustics
 				array. This has three different sections relating to data acquisition and then data 
 				saving, and then also sound outputting. Sound output section is more used for debugging
@@ -55,8 +55,8 @@ Summer 2023
 				package the app again and the shortcut will work for newest version of the app. There is a file
 				on operation that is useful for understanding the control panel app. This file outputs all the
    				as a timetable object.
-
-	### Array_Control_Pannel:
+       
+Array_Control_Pannel:
 				This is a MATLAB app that is used to setup and run the entire array from a single computer. This
    				package was coded in the app designer and is located in the app section of the MAT IDE. You may
    				also run the app from the top toolbar. This is the preffered method of running the array because
@@ -69,10 +69,10 @@ Summer 2023
    				button in the acoustics control page.
 					
 	
-	3. Libraries - 		This is the functions library that will be used to store all the functions that are going to
-			 	to be used for the data acquisition. These functions will mainly be used in the combined 
-				camera and acoustics app. They also appear within the acoustics control pannel app. Please read
-				the independent documentation on each one that is provided in the function file. 
+3. Libraries - 		This is the functions library that will be used to store all the functions that are going to
+			to be used for the data acquisition. These functions will mainly be used in the combined 
+			camera and acoustics app. They also appear within the acoustics control pannel app. Please read
+			the independent documentation on each one that is provided in the function file. 
 
 		Functions Files:
 
@@ -126,15 +126,15 @@ Summer 2023
 					to remove alot of the coding aspects in creating analysis scripts.
 		
 
-	4. Media -		This folder contains any media that is used in the operation manual or from any tests. This should only be
-				media files. I.e. .mp3 files, .jpeg images, etc. Raw data should be placed within the data folder. 
+4. Media -		This folder contains any media that is used in the operation manual or from any tests. This should only be
+			media files. I.e. .mp3 files, .jpeg images, etc. Raw data should be placed within the data folder. 
 
 
-	5. Documentation - 	This folder contains all the documentation that is useful for the acoustics array. Including, the DAQ
-				documentation, the terminal documentation, the microphone documentation, etc.
+5. Documentation - 	This folder contains all the documentation that is useful for the acoustics array. Including, the DAQ
+			documentation, the terminal documentation, the microphone documentation, etc.
 
 
-	6. Depreciated - 	All old code from previous years that has been superceded by newer code.
+6. Depreciated - 	All old code from previous years that has been superceded by newer code.
 
 
 	7. Array Procedures - 	This folder contains any instructions on procedures for testing. This is different than the documentation

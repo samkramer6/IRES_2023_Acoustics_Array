@@ -53,11 +53,20 @@ function find_chirps(data_path,mic_num,bat_type)
     fprintf("Finding Chirps...\n")
     fprintf("This may take a moment.\n")
 
+% --Filter data for correlations
+    try
+        filtered_data = filter_data(data,fs,100000,0.6,"false");
+    catch
+        filtered_data = filter_data(data,fs,[],[],"false");
+            disp("Error with filter")
+            disp("Ensure that Nyquist is above 200kHz")
+    end
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Time Domain Section %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Ghost Code:
     % --Compare the two time domain signals {Call time_domain_finder()}
-        time_indeces = time_domain_finder(data,fs,FM_chirp,CFFM_chirp);
+        time_indeces = time_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp);
         
     % --Outline for time domain section
         fprintf("Time Domain Finder Done.\n")

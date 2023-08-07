@@ -1,4 +1,4 @@
-function time_indeces = time_domain_finder(data,fs,FM_chirp,CFFM_chirp)
+function time_indeces = time_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp)
 %
 %   This function is a helper function for the find chirps algorithm that
 %   is used to analyze the bat data to find the chirps that have been
@@ -8,16 +8,6 @@ function time_indeces = time_domain_finder(data,fs,FM_chirp,CFFM_chirp)
 %
 %   Sam Kramer
 %   August 1st, 2023
-
-% --Filter data for correlations
-    try
-        filtered_data = filter_data(data,fs,100000,0.6,"false");
-    catch
-        filtered_data = filter_data(data,fs,[],[],"false");
-            disp("Error with filter")
-            disp("Ensure that Nyquist is above 200kHz")
-    end
-
 
 % --Cross correlate vs. simple chirps
     [FM_corr, ~] = xcorr(filtered_data, FM_chirp);

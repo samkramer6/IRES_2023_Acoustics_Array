@@ -28,6 +28,7 @@ function find_chirps(data_path,mic_num,bat_type)
     bat_type = string(bat_type);
     bat_type = char(upper(bat_type));
     try
+<<<<<<< HEAD
         if bat_type(1) == 'H'
             % --Load in hippo call
                 hippo_call = load("Hippo_example_chirp.mat");
@@ -40,6 +41,11 @@ function find_chirps(data_path,mic_num,bat_type)
         elseif bat_type(1) == 'R'
             % --Load in rhino calls
                 
+=======
+        if bat_type == "Hipposideros" || bat_type == "hipposideros"
+            hippo_call = load("Hippo_example_chirp.mat");
+            hippo_call = hipp_call.model_chirp;
+>>>>>>> 98870ca84eec167b39efa494ca58e30d064f4946
         end
     catch
         % --Error handler
@@ -58,7 +64,11 @@ function find_chirps(data_path,mic_num,bat_type)
 
 % Ghost Code:
     % --Compare the two time domain signals {Call time_domain_finder()}
+<<<<<<< HEAD
         time_indeces = time_domain_finder(data,fs,FM_chirp,CFFM_chirp);
+=======
+        indeces = time_domain_finder(data,fs,FM_chirp,hippo_call);
+>>>>>>> 98870ca84eec167b39efa494ca58e30d064f4946
         
     % --Outline for time domain section
         fprintf("Time Domain Finder Done.\n")

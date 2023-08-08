@@ -14,8 +14,8 @@ function time_indeces = time_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp)
     [CFFM_corr, ~] = xcorr(filtered_data, CFFM_chirp);
 
 % --Reformat data to find just the single sided cross correlation
-    CFFM_corr = CFFM_corr(length(CFFM_corr)/2:length(CFFM_corr));
-    FM_corr = FM_corr(length(FM_corr)/2:length(FM_corr));
+    CFFM_corr = CFFM_corr(floor(length(CFFM_corr)/2):length(CFFM_corr));
+    FM_corr = FM_corr(floor(length(FM_corr)/2):length(FM_corr));
 
 % --Develop peak threshold criteria
     CFFM_corr = abs(CFFM_corr);

@@ -39,7 +39,6 @@ function spectrogram_function(data, fs, time_start, time_end)
 
 % --Create Spectrogram
     try
-        figure()
         [s,f,t] = spectrogram(data, hamming(300), 290, [], fs,'yaxis');
             s = abs(s);
     catch

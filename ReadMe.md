@@ -33,7 +33,7 @@ some acoustics configuration but mostly is there for saving the data. You are ab
 To visualize any data you have taken, the app can automatically show you the last test you took by pressing the "Visualize Data" button. This will show the last dataset you took from all mics. From within the MATLAB 
 IDE we can use some of the following features
 
-1. visualize_data() -- Visualize entire unfiltered dataset.
+1. visualize_data() -- Visualize entire unfiltered dataset
 1. analyze_data() -- Will show dataset, and a windowed filtered dataset of one mic, and a spectrogram
 1. find_chirps() -- Will find chirps from an entire dataset and save the spectrograms
 1. spectrogram_data() -- will create a spectrogram for a window for one mic

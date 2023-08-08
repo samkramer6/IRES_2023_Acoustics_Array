@@ -11,6 +11,34 @@ Summer 2023
 > [!NOTE]
 > This is not the only documentation on the acoustics setup.
 
+## Use of System
+
+> [!NOTE]
+> There is a separate documentation file that is a .mlx for use and goes into depth on coding aspects.
+
+### 1. Turning on and running the system
+To turn on and run the acoustics array, first turn on the power supply that is located next
+to the DAQ. Also turn on the DAQ. To get to the Control App, go to matlab and look in the Apps section
+and it should be under favorites. If not there is an installer located within this repository under
+the name `Array Control Pannel`. The source code is also located within the repository control pannel
+folder. You may make any coding changes to it through this source code. You then must reinstall the app.
+
+### 2. Running a test
+Once the app has been opened, simply wait for it to initialize fully. It will have all the fields greyed-out
+until this has been completed. Once this has fully initialized, you may then start to configure the tests using the fields within the control tab.
+
+There are three separate tabs, control, acoustics, and camera config. There is very limited use in the camera config tab, however you are able to visualize the camera trigger output signal. The acoustics tab has 
+some acoustics configuration but mostly is there for saving the data. You are able to title the file name and then click save data. This will automatically make a new directory based on the date under "Testing {Date}" in the "Test Data" folder. While the data is saving, the "Save Data" button will be greyed out.
+
+To visualize any data you have taken, the app can automatically show you the last test you took by pressing the "Visualize Data" button. This will show the last dataset you took from all mics. From within the MATLAB 
+IDE we can use some of the following features
+
+1. visualize_data() -- Visualize entire unfiltered dataset.
+1. analyze_data() -- Will show dataset, and a windowed filtered dataset of one mic, and a spectrogram
+1. find_chirps() -- Will find chirps from an entire dataset and save the spectrograms
+1. spectrogram_data() -- will create a spectrogram for a window for one mic
+1. specfilt_data() -- will make a filtered spectrogram of the data for one mic for a specific time window
+
 ## Files:
 ### 1. Test Log -		
 This is the test log that is for official tests where data acquisition of bat flight is	

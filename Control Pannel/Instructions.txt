@@ -17,10 +17,10 @@ Starting the app:
 		- The system will not work if the DAW is not already on
 
 Running a test:
-	1. Put in all the parameters you would like (i.e., change the
-	trigger voltage, the test length, test delay, and sample rate).
-	Go to the Cameras Tab and click visualize trigger to confirm the 
-	test will run how you want it to.
+	1. Turn on the Power Supply and the DAQ. Put in all the parameters 
+	you would like (i.e., change the trigger voltage, the test length, 
+	test delay, and sample rate). Go to the Cameras Tab and click 
+	visualize trigger to confirm the test will run how you want it to.
 	2. Click start test, observe the green light change to indicate
 	data collection has begun.
 	3. Allow the test to end.
@@ -46,6 +46,9 @@ those data sets are below:
 				tuneable filter parameters. 
 	3. filter_data --> 	This filters the data for the user defined range
 	4. Analyze_data --> 	This will fully analyze the data for the user. 
+	5. find_chirps -->	This is a way to pull out chirps from data and
+				then create a large amount of spectrograms of
+				individual chirps.
 
 All of these functions are located in the libraries section, I encourage the user
 to read through them all and the documentation located in the ReadMe.txt in the

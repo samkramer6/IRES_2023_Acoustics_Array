@@ -1,10 +1,11 @@
-function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
+function specfilt_data2(data_location,mic_num,time_start,time_end,filt_center)
 %
 %   This function will be used to find the spectrogram of the data once a
 %   test has been completed. This will filter out noise from the system and
 %   will be able to analyze tests properly to find chirp data. This has set
-%   filter settings that cannot be changed unless the code is adjusted.
-%
+%   filter settings aside from the filter center which is an input value.
+%   This can be changed but not the width which is set. 
+%       
 %   Sam Kramer
 %   July 14th, 
 %   
@@ -12,7 +13,7 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
 %
 
 % --Load in data
-    load(data_location);
+   load(data_location);
 
 % --Reformat data
     final_output_data = final_output_data(2:end-1,:);
@@ -23,14 +24,14 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
 % --Find ind = 1
     ind1 = time_start*fs + 1;
     ind2 = time_end*fs;
-    
+
 % --Pull in data
-    % mic_num = mic_num + 1;
+    mic_num = mic_num + 1;
     data = mic_data(ind1:ind2,mic_num);
     data = data - mean(data);
 
 % --Filter data
-    filtered_data = filter_data(data,fs,7500,0.4,"False");
+    filtered_data = filter_data(data,fs,filt_center,0.25,"False");
 
 % --Finding Spectrogram
     figure()
@@ -40,12 +41,10 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
         s = s - max(s);
         imagesc(t,f,s)
         set(gca,"YDir","normal")
-        clb = colorbar;
         colormap("jet")
+        clb = colorbar;
         clim([-60 0])
-        title(['Mic ', num2str(mic_num)])
-        xlabel('Time [s]');
-        ylabel('Frequency [Hz]')
-        clb.Title.String = "Power [dB]";
-        ylim([0 15000])
-end
+        title('Spectrogram of Data')
+        xlabel('Time (s)');
+        ylabel('Frequency (Hz)')
+        clb.Title.String = "Power (dB)";

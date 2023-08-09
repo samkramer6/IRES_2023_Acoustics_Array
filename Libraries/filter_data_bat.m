@@ -1,4 +1,4 @@
-function filtered_data = filter_data(test_data,Fs,filter_center,width,show_response)
+function filtered_data = filter_data_bat(test_data,Fs,filter_center,width,show_response)
 % 
 %   This is a function that will be used to filter the data for one 
 %   microphone that is collected by the array. This filter will use a 4th 
@@ -30,7 +30,7 @@ function filtered_data = filter_data(test_data,Fs,filter_center,width,show_respo
     catch %{IF FILTER BAND IS UNSUITABLE}
 
         width = .5;
-        filter_center = 80000;
+        filter_center = 100000;
         lower_filt = filter_center - width*filter_center;
         upper_filt = filter_center + width*filter_center;
         filter_band = [lower_filt upper_filt] ./ (Fs/2);
@@ -43,7 +43,7 @@ function filtered_data = filter_data(test_data,Fs,filter_center,width,show_respo
 % --Frequency Response of filter
     try
         if show_response == "true"
-            figure()
+            figure;
             freqz(B,A,[],Fs)
                 title('Frequency Response of Created Filter')
         end

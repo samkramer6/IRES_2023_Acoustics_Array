@@ -1,4 +1,4 @@
-function analyze_data(data_path, mic_number, entire_set, t_start, t_end)
+function analyze_data_bat(data_path, mic_number, entire_set, t_start, t_end)
 %
 %   This function is used to do basic analysis of the data. The user is
 %   able to draw conclusions about the quality of their data from this
@@ -23,39 +23,39 @@ function analyze_data(data_path, mic_number, entire_set, t_start, t_end)
 % --Visualize entire dataset
     if entire_set == "true"
         visualize_data(data_path,max(time))
-        visualize_filtered_data(data_path,max(time),50000)
+        visualize_filtered_data(data_path,max(time),100000)
     end
 
 % --Look at single mic dataset
-    figure(1)
+    figure;
     subplot(3,1,1)
     plot(time,data(:,mic_number));
         title('Original signal');
         subtitle('Entire Signal')
-        ylabel('Amplitude (V)')
+        ylabel('Amplitude [V]')
         xlim([0 max(time)])
 
     subplot(3,1,2)
     plot(time,data(:,mic_number))
-        ylabel('Amplitude (V)')
+        ylabel('Amplitude [V]')
         subtitle('Appended Signal')
         xlim([t_start t_end])
 
 % --Filter data and ouput it onto a figure
-     filtered_data = filter_data(data(:,mic_number),fs,7500,0.4,"false");
+     filtered_data = filter_data_bat(data(:,mic_number),fs,100000,0.5,"true");
 
-    figure(1)
+    figure;
     subplot(3,1,3)
     plot(time,filtered_data)
-        xlabel('Time (s)')
+        xlabel('Time [s]')
         subtitle('Filtered Signal')
         xlim([t_start t_end])
         
 % --Filtered Spectrogram of data
-    specfilt_data(data_path,mic_number,t_start,t_end);
+    specfilt_data_bat(data_path,mic_number,t_start,t_end);
     title('Spectrogram of Test Data')
 
 % --Unfiltered Spectrogram of data
-    spectrogram_data(data_path,mic_number,t_start,t_end)
+    spectrogram_data_bat(data_path,mic_number,t_start,t_end)
 
 end

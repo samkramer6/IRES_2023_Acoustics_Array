@@ -30,15 +30,20 @@ codegen/
 # Octave session info
 octave-workspace
 
+# Figs
+*.fig
+*.mat
+
 # --Folders to be ignored
 Array Procedures and Code
 Depreciated
 External Documentation
 Media
 Test Data
+CAD Models
+.tmp.driveupload/
 
 # --Code to be ignored
 IRES Acoustics Control Pannel.mlappinstall.zip
 Array Acoustics Folder Guide.png
-CAD Models
 

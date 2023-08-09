@@ -1,0 +1,81 @@
+Array Credits!!
+
+░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░
+░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
+░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░
+░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░
+░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░
+█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█
+█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░
+░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░
+░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░
+░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░
+░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░
+░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░
+░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░
+░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░
+
+The array was built in part by the 2022 and 2023 IRES teams and
+the buddies who helped throughout the summer. 
+
+Special thanks to Ming Cafe in Miri for keeping team morale high
+and helping us get through our summer. We could not have done it
+without you.
+
+Teams
+	Acoustics:
+		Nick Rock (Physics, URI)
+		Sam Kramer (MechE, VT)
+			
+	Cameras:
+		Crystal Fowler (BioE, Cornell)
+		Yohan Sequeira (MechE, VT)
+		Chi Nnoka (Aero, Buffalo)
+		Udhaya (MechE, NUS)
+		BiBi (Math, UBD)
+
+	SonarBot:
+		Maggie Zhang (MechE, UMich)
+		Phillip Parisi (OceanE, URI)
+		Danny Yessayan (MechE, Columbia)
+		Syirin (CS, UBD)
+
+	FlightBot:
+		Jared Shing (MechE, UDub)
+		Jungsoo Park (MechE, VT)
+
+	Biology:
+		Paige Harman (Biology, NMSU)
+		Putri (Biology, UBD)
+		Syafiie (Biology, UBD)
+
+Thank you to all those who took part in the project as high school
+and college interns. Thank you to those professors who helped guide
+the project while Rolf was frequently absent. Thank you to Dr. Hong
+for help with the ML model. Thank you to Dr. Ulmar for the bat
+handling and catching. Thank you to Dr. Leonessa for all the signals
+help in the beginning of the project.
+
+───────▄▀▀▀▀▀▀▀▀▀▀▄▄
+────▄▀▀░░░░░░░░░░░░░▀▄
+──▄▀░░░░░░░░░░░░░░░░░░▀▄
+──█░░░░░░░░░░░░░░░░░░░░░▀▄
+─▐▌░░░░░░░░▄▄▄▄▄▄▄░░░░░░░▐▌
+─█░░░░░░░░░░░▄▄▄▄░░▀▀▀▀▀░░█
+▐▌░░░░░░░▀▀▀▀░░░░░▀▀▀▀▀░░░▐▌
+█░░░░░░░░░▄▄▀▀▀▀▀░░░░▀▀▀▀▄░█
+█░░░░░░░░░░░░░░░░▀░░░▐░░░░░▐▌
+▐▌░░░░░░░░░▐▀▀██▄░░░░░░▄▄▄░▐▌
+─█░░░░░░░░░░░▀▀▀░░░░░░▀▀██░░█
+─▐▌░░░░▄░░░░░░░░░░░░░▌░░░░░░█
+──▐▌░░▐░░░░░░░░░░░░░░▀▄░░░░░█
+───█░░░▌░░░░░░░░▐▀░░░░▄▀░░░▐▌
+───▐▌░░▀▄░░░░░░░░▀░▀░▀▀░░░▄▀
+───▐▌░░▐▀▄░░░░░░░░░░░░░░░░█
+───▐▌░░░▌░▀▄░░░░▀▀▀▀▀▀░░░█
+───█░░░▀░░░░▀▄░░░░░░░░░░▄▀
+──▐▌░░░░░░░░░░▀▄░░░░░░▄▀
+─▄▀░░░▄▀░░░░░░░░▀▀▀▀█▀
+▀░░░▄▀░░░░░░░░░░▀░░░▀▀▀▀▄▄▄▄▄
+	

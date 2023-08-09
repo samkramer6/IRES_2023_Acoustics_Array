@@ -13,7 +13,7 @@ function [data,time,fs] = load_data(data_path)
 
 % --Load in data from data path
     try
-        load(string(data_path));
+        load(data_path);
     catch
         fprintf("Data could not load properly, make sure path is correct \n")
     end

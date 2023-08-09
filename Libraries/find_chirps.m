@@ -14,7 +14,7 @@ function find_chirps(data_path,mic_num,bat_type)
 %%%%%%%%%%%%%%%%%%%%%%%%%% Selecting Data Type %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % --Workspace messages
-    clc;
+    clc; warning off;
 
 % --Load in data
     [data,~,fs] = load_data(data_path);
@@ -75,7 +75,7 @@ function find_chirps(data_path,mic_num,bat_type)
 
 % Ghost Code:
     % --Compare two frequency domain signals {Call freq_domain_fnder()}
-        time_indeces = freq_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp);
+        
     
     % --Outline for time domain section
         fprintf("Frequency Domain Finder Done.\n")
@@ -87,11 +87,12 @@ function find_chirps(data_path,mic_num,bat_type)
 
 
      % --Make new directory
-        if ~exist("Data Analysis Spectrogram Files\","dir")
+        if ~exist("C:\Users\FIT UBD\Desktop\Data Analysis Spectrogram Files\","dir")
             cd("C:\Users\FIT UBD\Desktop")
             mkdir("Data Analysis Spectrogram Files")
+            cd("C:\Users\FIT UBD\Desktop\Data Analysis Spectrogram Files")
         else
-            cd("C:\Users\FIT UBD\Desktop")
+            cd("C:\Users\FIT UBD\Desktop\Data Analysis Spectrogram Files\")
         end
 
     % --Generate Spectrograms
@@ -99,13 +100,19 @@ function find_chirps(data_path,mic_num,bat_type)
             
             % --Call on spectrogram_function
                 spect = figure('Visible','off');
-                spectrogram_function(data,fs,time_indeces(i) - 0.01, time_indeces(i) + 0.03);
+                spectrogram_function(filtered_data,fs,time_indeces(i) - 0.021, time_indeces(i) + 0.021);
+
+            % --Create title
+                title = "Spectrogram" + string(i) + ".jpg";
 
             % --Save spectrogram of data
+                saveas(spect,title)
                 
-                
-
         end
+
+    % --Close out of the directory
+        cd("C:\Users\FIT UBD\Desktop")
+        fclose("all");
         
         
 end

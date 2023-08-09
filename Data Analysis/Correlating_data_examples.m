@@ -2,7 +2,11 @@
 
 % --Setup
     close all;
-    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat_Trial_1";
+    data_path = "C:\Users\FIT UBD\Desktop\Array Acoustics\Test Data\Testing 20JUL2023\Bat1_Trial2_20JUL2023.mat";
+    [mic_data,time,fs] = load_data(data_path);
+
+    filtered_model_chirp = load("Array Acoustics\Libraries\Hippo_example_chirp.mat");
+    filtered_model_chirp = filtered_model_chirp.model_chirp;
 
 % --Loading in new Dataset
     mic_number = 32;
@@ -20,20 +24,4 @@
         ylabel("Correlation")
         title("Correlation of mic 26 to the chirps")
         grid on
-
-%{
-    There appears to be a large correlation spike at the middle of the
-    data set. This lag would correspond to a specific position within the
-    dataset correlating to position by n*fs - 1/fs, so this would give us a
-    position at roughly 2.951 seconds which is where the other spike was in
-    the dataset in the first test. Lets look at the spectrogram now.
-%}
-
-% --Spectrogram data
-    spectrogram_data(data_path,mic_number, 2.94, 2.96)
-
-% --Plot out that section of the data
-    %micmic = mic
-    figure()
-    plot(mic(fs*2.948:fs*2.96))
     

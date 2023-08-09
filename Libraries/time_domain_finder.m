@@ -20,14 +20,15 @@ function time_indeces = time_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp)
 % --Develop peak threshold criteria
     CFFM_corr = abs(CFFM_corr);
     FM_corr = abs(FM_corr);
-    CFFM_peak_threshold = max(CFFM_corr) - 4*mean(CFFM_corr);
-    FM_peak_threshold = max(FM_corr) - 1.5*mean(FM_corr);
+    CFFM_peak_threshold = max(CFFM_corr) - 2*mean(CFFM_corr);
+    FM_peak_threshold = max(FM_corr) - 1*mean(FM_corr);
     
 % --Find peaks of both correlations
-    [~,CF_ind] = findpeaks(CFFM_corr,"MinPeakHeight",CFFM_peak_threshold);
-    [~,FM_ind] = findpeaks(FM_corr,"MinPeakHeight",FM_peak_threshold);
+    CF_ind = five_peak_finder(CFFM_corr, CFFM_peak_threshold);
+    %FM_ind = five_peak_finder(FM_corr, FM_peak_threshold);
 
 % --Compare the peaks of both {Calls Comparison Function}
-    time_indeces = compare_function(CF_ind./fs, FM_ind./fs, 0.01);
+    indeces = [CF_ind]./fs;
+    time_indeces = compare_function(indeces, 0.01);
 
 end

@@ -18,7 +18,7 @@ function signal = create_chirp(chirp_type, number, length, freq_start, freq_end,
 %}
 
 % --Call on the dsp.chirp function
-    number = 1/number;
+    number = length/number;
     chirp = dsp.Chirp('SweepDirection', 'Unidirectional', ...
                       'Type', chirp_type, ...
                       'TargetFrequency', freq_end, ...
@@ -32,19 +32,29 @@ function signal = create_chirp(chirp_type, number, length, freq_start, freq_end,
     signal = chirp();
 
 % --Show Spectrogram
-    if show_spect == "True"
-        figure(2)
-        [s,f,t] = spectrogram(signal, hamming(100), 98, [], fs,'yaxis');
-        s = 20*log10(abs(s));
-        s = s - max(s);
-        imagesc(t,f,s);
-        set(gca,"YDir","normal")
-        clb = colorbar;
-        clim([-60 0])
-        title('Spectrogram of Sample Chirp')
-        xlabel('Time (s)');
-        ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (dB)";
+    if show_spect == "True" || show_spect == "true"
+        try
+            spectrogram_function(signal,fs,0,length)   % My own function
+
+            disp("Chirp Created")
+        catch
+            [s,f,t] = spectrogram(signal, hamming(300), 290, [], fs,'yaxis');
+                s = 20*log10(abs(s));
+                s = s - max(s);
+                imagesc(t,f,s)
+                set(gca,"YDir","normal")
+                colormap('jet')
+                clb = colorbar;
+                clim([-60 0])
+                title('Unfiltered Spectrogram of Data')
+                xlabel('Time (s)');
+                ylabel('Frequency (Hz)')
+                clb.Title.String = "Power (dB)";
+                ylim([30000 max(f)])
+
+            disp("Default Spectrogram Settings Used")
+        end
+
     end
 
 end

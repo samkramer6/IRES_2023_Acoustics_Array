@@ -1,4 +1,4 @@
-function visualize_filtered_data(test_data,t_span,filter_center)
+function visualize_filtered_data(data_path,t_span,filter_center)
 %
 %   This function is used to visualize the data with an additional filter
 %   on top of the data. This will use the other two functions that have
@@ -17,15 +17,15 @@ function visualize_filtered_data(test_data,t_span,filter_center)
 % 
 %   See also visualize_data, and filter_data
 
-% --Load in data from background noise test
-    load(test_data);
+% --Load in data
+    [data,time,fs] = load_data(data_path);
 
-% --Select 1 second of data
-    time = final_output_data(:,1);
-    fs = 1/(time(10) - time(9));
-    index = round(fs*t_span);
-    data = final_output_data(2:index,2:width(final_output_data));
-    time = time(2:length(data)+1);
+% --Pick out single mic
+    data = data(:,mic_num);
+
+% --Reformat time span data
+    time = time(1:t_span*fs);
+    data = data(1:t_span*fs);
 
 % --Plot data in successive figures
     j = 1;  % figure Ticker

@@ -42,7 +42,7 @@ function filtered_data = filter_data(test_data,Fs,filter_center,width,show_respo
 
 % --Frequency Response of filter
     try
-        if show_response == "true"
+        if show_response == "true" || show_response == "True"
             figure()
             freqz(B,A,[],Fs)
                 title('Frequency Response of Created Filter')

@@ -1,4 +1,4 @@
-function spectrogram_data_bat(data_path,mic_num,time_start,time_end)
+function spectrogram_data_batbot(data_path,mic_num,time_start,time_end)
 %
 %   This function will be used to find the spectrogram of the data once a
 %   test has been completed. This will be for finding the resonant
@@ -25,6 +25,7 @@ function spectrogram_data_bat(data_path,mic_num,time_start,time_end)
     ind2 = time_end*fs;
     
 % --Pull in data
+    %mic_num = mic_num + 1;
     data = mic_data(ind1:ind2,mic_num);
     data = data - mean(data);
 
@@ -43,6 +44,6 @@ function spectrogram_data_bat(data_path,mic_num,time_start,time_end)
         xlabel('Time (s)');
         ylabel('Frequency (Hz)')
         clb.Title.String = "Power (dB)";
-        ylim([0 15000])
+        ylim([10000 80000])
 
 end

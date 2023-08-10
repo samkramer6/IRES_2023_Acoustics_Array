@@ -1,4 +1,4 @@
-function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
+function specfilt_data_bat(data_location,mic_num,time_start,time_end)
 %
 %   This function will be used to find the spectrogram of the data once a
 %   test has been completed. This will filter out noise from the system and
@@ -30,7 +30,7 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
     data = data - mean(data);
 
 % --Filter data
-    filtered_data = filter_data(data,fs,7500,0.4,"False");
+    filtered_data = filter_data(data,fs,100000,0.33,"False");
 
 % --Finding Spectrogram
     figure()
@@ -47,5 +47,5 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
         xlabel('Time [s]');
         ylabel('Frequency [Hz]')
         clb.Title.String = "Power [dB]";
-        ylim([0 15000])
+
 end

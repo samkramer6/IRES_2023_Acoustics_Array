@@ -1,99 +1,188 @@
-function mic_plot(mics)
-    % Define the center point of the first octagon
+% function points_table = mic_plot(spacing)
+%     % Define the center point of the octagon
+%     x0 = 0;
+%     y0 = 0;
+% 
+%     % Radius of the octagon
+%     r = 1;
+% 
+%     % Create a figure
+%     figure;
+% 
+%     % Calculate the maximum number of points that can fit on one side of the octagon
+%     num_points_per_side_x = floor(2 * r / spacing(1));
+%     num_points_per_side_y = floor(2 * r / spacing(2));
+% 
+%     % Calculate the actual spacing between points to maximize the number of points within the octagon
+%     actual_spacing_x = 2 * r / num_points_per_side_x;
+%     actual_spacing_y = 2 * r / num_points_per_side_y;
+% 
+%     % Plot the octagon
+%     angles = (0:7) * pi/4 + pi/8;
+%     x_octagon = x0 + r * cos(angles);
+%     y_octagon = y0 + r * sin(angles);
+%     plot([x_octagon, x_octagon(1)], [y_octagon, y_octagon(1)], 'b-', 'LineWidth', 2);
+%     hold on;
+% 
+%     % Initialize arrays to store points within the octagon
+%     points_x = [];
+%     points_y = [];
+% 
+%     % Loop to add points within the octagon
+%     for i = 1:num_points_per_side_y
+%         y_shift = -r + (i - 1) * actual_spacing_y;
+%         for j = 1:num_points_per_side_x
+%             x_shift = -r + (j - 1) * actual_spacing_x;
+%             x_point = x0 + x_shift;
+%             y_point = y0 + y_shift;
+% 
+%             % Check if the point is within the octagon
+%             if inpolygon(x_point, y_point, x_octagon, y_octagon)
+%                 points_x = [points_x; x_point];
+%                 points_y = [points_y; y_point];
+%                 plot(x_point, y_point, 'k.', 'MarkerSize', 10);
+%             end
+%         end
+%     end
+% 
+%     % Set the axis limits to include the complete octagon and points
+%     axis equal;
+%     axis off;
+% 
+%     % Add labels and title
+%     xlabel('X');
+%     ylabel('Y');
+%     title('Mic Array');
+% 
+%     % Create a table with the points within the octagon
+%     points_table = table(points_x, points_y, 'VariableNames', {'Y [m]', 'Z [m]'});
+% end
+
+% function points_table = mic_plot(spacing)
+%     % Define the center point of the octagon
+%     x0 = 0;
+%     y0 = 0;
+% 
+%     % Radius of the octagon
+%     r = 1;
+% 
+%     % Create a figure
+%     figure;
+% 
+%     % Calculate the maximum number of points that can fit on one side of the octagon
+%     num_points_per_side_x = floor(2 * r / spacing(1));
+%     num_points_per_side_y = floor(2 * r / spacing(2));
+% 
+%     % Calculate the actual spacing between points to maximize the number of points within the octagon
+%     actual_spacing_x = 2 * r / num_points_per_side_x;
+%     actual_spacing_y = 2 * r / num_points_per_side_y;
+% 
+%     % Plot the octagon
+%     angles = (0:7) * pi/4 + pi/8;
+%     x_octagon = x0 + r * cos(angles);
+%     y_octagon = y0 + r * sin(angles);
+%     plot([x_octagon, x_octagon(1)], [y_octagon, y_octagon(1)], 'b-', 'LineWidth', 2);
+%     hold on;
+% 
+%     % Initialize arrays to store points within the octagon
+%     points_x = [];
+%     points_y = [];
+% 
+%     % Loop to add points within the octagon
+%     for i = 1:num_points_per_side_y
+%         y_shift = -r + (i - 1) * actual_spacing_y;
+%         for j = 1:num_points_per_side_x
+%             x_shift = -r + (j - 1) * actual_spacing_x;
+%             x_point = x0 + x_shift;
+%             y_point = y0 + y_shift;
+% 
+%             % Check if the point is within the octagon
+%             if inpolygon(x_point, y_point, x_octagon, y_octagon)
+%                 points_x = [points_x; x_point];
+%                 points_y = [points_y; y_point]; % No need to invert y-coordinate
+%                 plot(x_point, y_point, 'k.', 'MarkerSize', 10);
+%             end
+%         end
+%     end
+% 
+%     % Set the axis limits to include the complete octagon and points
+%     axis([0 1.6 0 1.96]);
+%     axis equal;
+%     axis off;
+% 
+%     % Add labels and title
+%     xlabel('X');
+%     ylabel('Y');
+%     title('Mic Array');
+% 
+%     % Rescale the points to run from 0 to 1.6 in x and 0 to 1.96 in y
+%     points_x = (points_x + 1) * 0.8; % Scale x-coordinates to run from 0 to 1.6
+%     points_y = (points_y + 1) * 0.98; % Scale y-coordinates to run from 0 to 1.96
+% 
+%     % Create a table with the points within the octagon (including adjusted y-coordinates)
+%     points_table = table(points_x, points_y, 'VariableNames', {'Y [m]', 'Z [m]'});
+% end
+
+function points_table = mic_plot(spacing)
+    % Define the center point of the octagon
     x0 = 0;
     y0 = 0;
 
     % Radius of the octagon
     r = 1;
 
-    % Number of octagons in each row
-    numOctagonsPerRow = 3;
-
-    % Spacing between octagons
-    spacing = r * 1.2; % Adjust as desired
-
     % Create a figure
     figure;
 
-    % Initialize the highlight vertex index
-    highlightIndex = 1;
+    % Calculate the maximum number of points that can fit on one side of the octagon
+    num_points_per_side_x = floor(2 * r / spacing(1));
+    num_points_per_side_y = floor(2 * r / spacing(2));
 
-    % Loop to plot each octagon
-    for i = 1:(2*numOctagonsPerRow)
-        % Calculate the x-coordinate shift for each octagon
-        xShift = mod(i-1, numOctagonsPerRow) * (spacing + 2*r);
+    % Calculate the actual spacing between points to maximize the number of points within the octagon
+    actual_spacing_x = 2 * r / num_points_per_side_x;
+    actual_spacing_y = 2 * r / num_points_per_side_y;
 
-        % Calculate the y-coordinate shift for each octagon
-        yShift = -fix((i-1) / numOctagonsPerRow) * (spacing + 2*r);
+    % Plot the octagon
+    angles = (0:7) * pi/4 + pi/8;
+    x_octagon = x0 + r * cos(angles);
+    y_octagon = y0 + r * sin(angles);
+    plot([x_octagon, x_octagon(1)], [y_octagon, y_octagon(1)], 'b-', 'LineWidth', 2);
+    hold on;
 
-        % Calculate the coordinates of each vertex of the octagon
-        angles = (0:7) * pi/4 + pi/8; % Adjust the angle offset
-        x_octagon = x0 + xShift + r * cos(angles);
-        y_octagon = y0 + yShift + r * sin(angles);
+    % Initialize arrays to store points within the octagon
+    points_x = [];
+    points_y = [];
 
-        % Plot the octagon
-        plot([x_octagon, x_octagon(1)], [y_octagon, y_octagon(1)], 'b-', 'LineWidth', 2);
-        hold on;
+    % Loop to add points within the octagon
+    for i = 1:num_points_per_side_y
+        y_shift = -r + (i - 1) * actual_spacing_y;
+        for j = 1:num_points_per_side_x
+            x_shift = -r + (j - 1) * actual_spacing_x;
+            x_point = x0 + x_shift;
+            y_point = y0 + y_shift;
 
-        % Plot a black point at the origin for octagons 1 and 6
-        if i == 1
-            plot(x0 + xShift, y0 + yShift, 'k.', 'MarkerSize', 10);
-            text(x0 + xShift, y0 + yShift, '31', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'top', 'FontSize', 12);
-        if mics(7) == 31
-            plot(x0 + xShift, y0 + yShift, 'ro', 'MarkerSize', 8, 'LineWidth', 2);
-        end
-        elseif i == 6
-            plot(x0 + xShift, y0 + yShift, 'k.', 'MarkerSize', 10);
-            text(x0 + xShift, y0 + yShift, '32', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'top', 'FontSize', 12);
-        if mics(7) == 32
-            plot(x0 + xShift, y0 + yShift, 'ro', 'MarkerSize', 8, 'LineWidth', 2);
-        end
-        end
-
-        % Calculate the coordinates of each vertex of the pentagon
-        angles_pentagon = (0:4) * 2*pi/5 + pi/10; % Adjust the angle offset
-        x_pentagon = x0 + xShift + r * cos(angles_pentagon);
-        y_pentagon = y0 + yShift + r * sin(angles_pentagon);
-
-        % Plot the pentagon vertices as black points
-        plot(x_pentagon, y_pentagon, 'k.', 'MarkerSize', 10);
-
-        % Highlight the specified vertex for each pentagon
-        if mics(highlightIndex) ~= 0
-            highlightVertex = mics(highlightIndex)-5*(i-1);
-            highlightX = x_pentagon(mod(highlightVertex-2, 5) + 1);
-            highlightY = y_pentagon(mod(highlightVertex-2, 5) + 1);
-            plot(highlightX, highlightY, 'ro', 'MarkerSize', 8, 'LineWidth', 2);
-        end
-
-        % Calculate the label positions
-        labelOffset = 0.25; % Adjust the offset as desired
-        labelX = x_pentagon + labelOffset * (x_pentagon - mean(x_pentagon));
-        labelY = y_pentagon + labelOffset * (y_pentagon - mean(y_pentagon));
-
-        % Calculate the pentagon label
-        pentagonLabel = (i-1)*5 + mod((1:5), 5) + 1;
-
-        % Add labels to the vertices
-        for j = 1:numel(x_pentagon)
-            text(labelX(j), labelY(j), sprintf('%d', pentagonLabel(j)), 'HorizontalAlignment', 'center');
-        end
-
-        % Label the octagon
-        text(x0 + xShift, y0 + yShift - r - 0.2, sprintf('Ring %d', i), 'HorizontalAlignment', 'center', 'VerticalAlignment', 'top', 'FontSize', 12, 'FontWeight', 'bold');
-
-        % Update the highlight index
-        highlightIndex = highlightIndex + 1;
-        if highlightIndex > numel(mics)
-            highlightIndex = 1;
+            % Check if the point is within the octagon
+            if inpolygon(x_point, y_point, x_octagon, y_octagon)
+                points_x = [points_x; x_point];
+                points_y = [points_y; y_point];
+                plot(x_point, y_point, 'k.', 'MarkerSize', 10);
+            end
         end
     end
 
-    % Set the axis limits to include the complete octagons and pentagons
-    axis equal; axis off;
+    % Set the axis limits to include the complete octagon and points
+    axis equal;
+    axis off;
 
     % Add labels and title
     xlabel('X');
     ylabel('Y');
     title('Mic Array');
+
+    % Rescale the points to run from 0 to 1.6 in x and 0 to 1.96 in y
+    points_x = (points_x + 1) * 0.8; % Scale x-coordinates to run from 0 to 1.6
+    points_y = (points_y + 1) * 0.98; % Scale y-coordinates to run from 0 to 1.96
+
+    % Create a table with the points within the octagon (including adjusted y-coordinates)
+    points_table = table(points_x, points_y, 'VariableNames', {'X', 'Y'});
 end

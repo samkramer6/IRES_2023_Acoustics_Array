@@ -1,11 +1,18 @@
-function surf_plot(data, timestep, sample_rate)
-    ind = timestep * sample_rate;
+function source_surf_plot(filepath, time_start, time_end, source)
 
-    % Extract the pressure values from the data matrix
-    pressure = data(ind, :) ./ (10.^(2.5));
+    % Load, shape, and filter data
+    load(filepath);
 
-    % Normalize the pressure values between 0 and 1
-    npressure = (pressure - min(pressure(:))) / (max(pressure(:)) - min(pressure(:)));
+    final_output_data = final_output_data(2:end-1,:);
+    mic_data = final_output_data(:,2:end);
+    time = final_output_data(:,1);
+    fs = round(1/(time(10)-time(9)));
+
+    ind1 = time_start*fs + 1;
+    ind2 = time_end*fs;
+
+    mic_data = mic_data(ind1:ind2,:);
+    mic_data = normalize(mic_data, "center", "mean");
 
     % Real world dimensions in [m]
     x = 5;
@@ -50,36 +57,66 @@ function surf_plot(data, timestep, sample_rate)
         0,       1/2*y,   1/2*z;    x,       1/2*y,   1/2*z
     ];
 
-    % Create the figure
-    figure;
-    
-    % Plot the 3D surface mesh
-    shape = convhull(meshPoints(:,1),meshPoints(:,2),meshPoints(:,3));
-    trisurf(shape,meshPoints(:, 1), meshPoints(:, 2), meshPoints(:, 3), 'FaceColor', 'black', 'FaceAlpha', 0.2, 'EdgeAlpha', 0.2);
-    hold on;
-    
     % Define the number of data points
-    numPoints = numel(npressure);
+    numPoints = size(mic_data, 2);
 
-    % Create the color map
-    cmap = hot(numPoints);
+    % Normalize the mic_data values between 0 and 1
+    norm_data = (mic_data - min(mic_data(:))) / (max(mic_data(:)) - min(mic_data(:)));
 
-    % Map the pressure values to the color map
-    colorIndices = ceil((npressure - min(npressure)) / (max(npressure) - min(npressure)) * numPoints);
-    colorIndices = max(colorIndices, 1); % Ensure indices are not less than 1
-    colorIndices = min(colorIndices, numPoints); % Ensure indices are not greater than the colormap size
-    rgbValues = cmap(round(colorIndices), :);
-    
-    % Scatter the 3D points with color mapping
-    scatter3(micPoints(:,1), micPoints(:,2), micPoints(:,3), 30, rgbValues, 'filled');
-    colormap(cmap);
-    colorbar;
+    figure;
 
-    % Set the axis labels and title
-    xlabel('X');
-    ylabel('Y');
-    zlabel('Z');
-    title(['Normalized pressures at time ', num2str(timestep)]);
-    
-    hold off;
+    for i = ind1:round(((ind2 - ind1) / (fs / 10000))):ind2
+
+        if i > numel(mic_data(:,2))
+            continue;
+        end
+
+        data = norm_data(i,:);
+
+        % Create the color map
+        cmap = hot(numPoints);
+
+        % Map the pressure values to the color map
+        colorIndices = ceil(data * numPoints);
+        colorIndices = max(colorIndices, 1); % Ensure indices are not less than 1
+        colorIndices = min(colorIndices, numPoints); % Ensure indices are not greater than the colormap size
+        rgbValues = cmap(round(colorIndices), :);
+
+        % Clear the previous plot
+        clf;
+
+        % Set points with normalized value less than 0.5 to black
+        blackIndices = data < 0.5;
+        blackColor = [0, 0, 0];
+        rgbValues(blackIndices, :) = repmat(blackColor, sum(blackIndices), 1);
+
+        % Plot the 3D surface mesh
+        shape = convhull(meshPoints(:, 1), meshPoints(:, 2), meshPoints(:, 3));
+        trisurf(shape, meshPoints(:, 1), meshPoints(:, 2), meshPoints(:, 3), 'FaceColor', 'black', 'FaceAlpha', 0.2, 'EdgeAlpha', 0.2);
+
+        colormap(cmap);
+        colorbar;
+
+        hold on;
+
+        % Scatter the 3D points with color mapping
+        scatter3(micPoints(:, 1), micPoints(:, 2), micPoints(:, 3), 30, rgbValues, 'filled')
+
+        % Set the axis labels and title
+        xlabel('X');
+        ylabel('Y');
+        zlabel('Z');
+        title(['Relative Amplitude at Time ', num2str(i / fs)]);
+
+        % Plot the source point
+        source_x = source(1) * x;
+        source_y = source(2) * y;
+        source_z = source(3) * z;
+        scatter3(source_x, source_y, source_z, 90, 'green', 'filled');
+
+        hold off;
+
+        % Update the plot
+        drawnow;
+    end
 end

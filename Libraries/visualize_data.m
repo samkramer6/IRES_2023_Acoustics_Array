@@ -1,4 +1,4 @@
-function visualize_data(data_path, t_span)
+function visualize_data(test_data, t_span)
 %
 %   This function is used to test all the microphones to see if they are
 %   working or not before a test is completed. Can be used to check data
@@ -16,15 +16,15 @@ function visualize_data(data_path, t_span)
 % 
 %   See also background_noise_test, save_daq_data, and add_daq_channels
 
-% --Load in data
-    [data,time,fs] = load_data(data_path);
+% --Load in data from background noise test
+    load(test_data);
 
-% --Pick out single mic
-    data = data(:,mic_num);
-
-% --Reformat time span data
-    time = time(1:t_span*fs);
-    data = data(1:t_span*fs);
+% --Select 1 second of data
+    time = final_output_data(:,1);
+    fs = 1/(time(10) - time(9));
+    index = round(fs*t_span);
+    data = final_output_data(2:index,2:width(final_output_data));
+    time = time(2:length(data)+1);
 
 % --Plot data in successive figures
     j = 1;  % figure Ticker

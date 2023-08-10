@@ -10,10 +10,10 @@ function peak_windows = get_peak_windows(data, sample_rate)
 
       Edited by Nicholas Rock 7/6/23
     %}
-    
-    data = normalize(data, "center", "mean"); % Center data at 0 V
 
+    time = 1:(size(data(:,1)));
     number_mics = size(data, 2);
+
     % Polling back 1 ms and forward 5 ms
     window_duration = round(0.006 * sample_rate) + 1;
 
@@ -29,12 +29,23 @@ function peak_windows = get_peak_windows(data, sample_rate)
     
     for i = 1:number_mics
         if ismember(i, skipped_indices)
+            peak_windows{i,1} = 0; 
+            peak_windows{i,2} = 0;
             continue;
         end
 
-        % Find peaks in data for the current microphone. Default inter-peak
-        % distance is 5 ms and the cutoff amplitude is 0.2 V
-        [peaks, peak_indices] = findpeaks(data(:, i), 'MinPeakDistance', round(0.005 * sample_rate), 'MinPeakHeight', 0.2);
+        % Find peaks in data for the current microphone.
+        
+        % Calculate the maximum value in the data
+        max_value = max(data(:, i));
+        
+        % Define the fraction or multiple of the maximum value for the minimum peak height
+        min_peak_height_ratio = 0.90;  % Adjust this value as needed
+        
+        % Calculate the minimum peak height based on the maximum value
+        min_peak_height = min_peak_height_ratio * max_value;
+
+        [peaks, peak_indices] = findpeaks(data(:, i), 'MinPeakDistance', round(0.005 * sample_rate), 'MinPeakHeight',  min_peak_height);
 
         % Preallocate arrays for each microphone based on the number of peaks found
         peak_window_mic = zeros(window_duration, numel(peaks));
@@ -49,12 +60,12 @@ function peak_windows = get_peak_windows(data, sample_rate)
             if window_start >= 1 && window_end <= numel(data(:, i))
                 % Assign values to the peak and time arrays
                 peak_window_mic(:, j) = data(window_start:window_end, i); % pressure values by peak #
-                time_values_mic(:, j) = ((window_start:window_end) - 1) / sample_rate * 1000; % Subtract 1 to start from 0 time, % time values by peak #
+                time_values_mic(:, j) = time(window_start:window_end); % Subtract 1 to start from 0 time, % time values by peak #
             end
         end
 
         % Store the peak and time arrays in the cell array
-        peak_windows{i,1} = time_values_mic; 
+        peak_windows{i,1} = time_values_mic / sample_rate * 1000; 
         peak_windows{i,2} = peak_window_mic;
     end
 end

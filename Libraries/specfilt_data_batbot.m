@@ -30,7 +30,7 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
     data = data - mean(data);
 
 % --Filter data
-    filtered_data = filter_data(data,fs,7500,0.4,"False");
+    filtered_data = filter_data_batbot(data,fs,40000,0.5,"False");
 
 % --Finding Spectrogram
     figure()
@@ -47,5 +47,6 @@ function specfilt_data_batbot(data_location,mic_num,time_start,time_end)
         xlabel('Time [s]');
         ylabel('Frequency [Hz]')
         clb.Title.String = "Power [dB]";
-        ylim([0 15000])
+        ylim([0 80000])
+
 end

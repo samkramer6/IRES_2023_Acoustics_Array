@@ -1,48 +1,49 @@
-function spectrogram_data_bat(data_path,mic_num,time_start,time_end)
+function spectrogram_data(data_path,mic_num,time_start,time_end,type)
 %
 %   This function will be used to find the spectrogram of the data once a
 %   test has been completed. This will be for finding the resonant
 %   frequencies of the microphone data and confirming there is no noise
-%   pollution into the data.
+%   pollution into the data. There are options to have it in log or linear
+%   scales
+%
+%   Inputs:     
+%       data_path::AbsStr   ==  The path that points to the dataset
+%       mic_number::Int     ==  The microphone you would like to 
+%                               investigate the data from.
+%       time_start::Float   ==  The time window starting point.
+%       time_end::Float     ==  The time window ending point. Will default
+%                               to whole dataset if left out.
+%       type::AbsStr        ==  The type of scale you would like the
+%                               spectrograms to be in ("Log" or "Linear").
 %
 %   Sam Kramer
-%   June 16th, 2023
+%   June 30th, 2023
 %   
-%   See also mic_check, and background_noise_test
+%   See also load_data and spectrogram_function
 %
 
 % --Load in data
-    load(data_path);
+    [data,~,fs] = load_data(data_path);
 
-% --Reformat data
-    final_output_data = final_output_data(2:end-1,:);
-    mic_data = final_output_data(:,2:width(final_output_data));
-    time = final_output_data(:,1);
-    fs = round(1/(time(10)-time(9)));
-
-% --Find ind = 1
-    ind1 = time_start*fs + 1;
-    ind2 = time_end*fs;
-    
-% --Pull in data
-    data = mic_data(ind1:ind2,mic_num);
-    data = data - mean(data);
+% --Select microphone of interest
+    mic_num = uint8(mic_num);           % Confirms int data type
+    try
+        data = data(:,mic_num);
+    catch
+        disp("Mic does not exist in dataset")
+    end
 
 % --Finding Spectrogram
-    figure()
-    [s,f,t] = spectrogram(data, hamming(128), 124, [], fs,'yaxis');
-        t = time_start:(1/length(t)):time_end;
-        s = 20*log10(abs(s));
-        s = s - max(s);
-        imagesc(t,f,s)
-        set(gca,"YDir","normal")
-        colormap('jet')
-        clb = colorbar;
-        clim([-60 0])
-        title('Unfiltered Spectrogram of Data')
-        xlabel('Time (s)');
-        ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (dB)";
-        ylim([0 15000])
+    type = upper(string(type));
+    try
+        if type == "LOG"
+            spectrogram_function_dB(data,fs,time_start,time_end)
+        elseif type == "LINEAR"
+            spectrogram_function(data,fs,time_start,time_end)
+        end
+
+    catch
+        disp("Could not create spectrogram")
+    end
 
 end

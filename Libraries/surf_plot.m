@@ -1,8 +1,6 @@
-function surf_plot(data, timestep, sample_rate)
-    ind = timestep * sample_rate;
-
+function surf_plot(timestep, data)
     % Extract the pressure values from the data matrix
-    pressure = data(ind, :) ./ (10.^(2.5));
+    pressure = data(timestep, 1:32);
 
     % Normalize the pressure values between 0 and 1
     npressure = (pressure - min(pressure(:))) / (max(pressure(:)) - min(pressure(:)));
@@ -74,12 +72,12 @@ function surf_plot(data, timestep, sample_rate)
     scatter3(micPoints(:,1), micPoints(:,2), micPoints(:,3), 30, rgbValues, 'filled');
     colormap(cmap);
     colorbar;
-
+    
     % Set the axis labels and title
     xlabel('X');
     ylabel('Y');
     zlabel('Z');
-    title(['Normalized pressures at time ', num2str(timestep)]);
+    title('Pressures at time', num2str(timestep));
     
     hold off;
 end

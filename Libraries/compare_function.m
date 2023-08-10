@@ -1,4 +1,4 @@
-function new_ind = compare_function(vector1,vector2,threshold)
+function new_ind = compare_function(indeces ,threshold)
 %
 %   This is a function that is used to compare the time indeces of the
 %   peaks for a single dataset vector. It will eliminate any repeated
@@ -6,10 +6,9 @@ function new_ind = compare_function(vector1,vector2,threshold)
 %   threshold of eachother. Will return a new vector as new_ind.
 %
 %   Inputs:
-%           vector1::AbsVec =   First vector dataset you would like to
-%                               compare. Must be a column vector.
-%           vector2::AbsVec =   Second vector dataset you would like to
-%                               compare.
+%           Indeces::AbsVec =   This is a data vector that you would like
+%                               to compare the data and eliminate all the
+%                               reapeated values.
 %           threshold::Float =  This is the difference threshold criteria
 %                               you establish to eliminate two values and 
 %                               combine them to a single value. 
@@ -21,7 +20,6 @@ function new_ind = compare_function(vector1,vector2,threshold)
 %
 
 % --Setup
-    indeces = [vector1; vector2];
     new_ind = [indeces(1)];
 
 % --Loop through entire ind array set

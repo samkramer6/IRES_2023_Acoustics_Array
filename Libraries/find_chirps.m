@@ -36,9 +36,14 @@ function find_chirps(data_path,mic_num,bat_type)
 
             % --create linear chirp pattern
                 FM_chirp = create_chirp("Linear",1,1,120000,100000,500000,"false");
+                weight = 1.3;
 
         elseif bat_type(1) == 'R'
             % --Load in rhino calls
+                rhino_call = load("Rhino_example_chirp.mat");
+                CFFM_chirp = rhino_call.model_chirp;
+                FM_chirp = create_chirp("Linear",1,1,120000,100000,500000,"false");
+                weight = 0;
         end
     catch
         % --Error handler
@@ -66,7 +71,7 @@ function find_chirps(data_path,mic_num,bat_type)
 
 % Ghost Code:
     % --Compare the two time domain signals {Call time_domain_finder()}
-        time_indeces = time_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp);
+        time_indeces = time_domain_finder(filtered_data,fs,FM_chirp,CFFM_chirp,weight);
         
     % --Outline for time domain section
         fprintf("Time Domain Finder Done.\n")
@@ -113,7 +118,6 @@ function find_chirps(data_path,mic_num,bat_type)
     % --Close out of the directory
         cd("C:\Users\FIT UBD\Desktop")
         fclose("all");
-        
-        
+        close all;          % Close all the open figures
 end
 

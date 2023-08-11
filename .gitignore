@@ -33,6 +33,7 @@ octave-workspace
 # Figs
 *.fig
 *.mat
+*.jpg
 
 # --Folders to be ignored
 Array Procedures and Code

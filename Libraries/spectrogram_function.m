@@ -8,12 +8,10 @@ function spectrogram_function(data, fs, time_start, time_end)
 %   log-scale spectrograms.
 %
 %   Inputs:     
-%       data_path::AbsStr   ==  The path that points to the dataset
-%       mic_number::Int     ==  The microphone you would like to 
-%                               investigate the data from.
-%       time_start::Float   ==  The time window starting point.
-%       time_end::Float     ==  The time window ending point. Will default
-%                               to whole dataset if left out.
+%       data::AbsVec    =   The data you would like to spectrogram
+%       fs::Int         =   The sample frequency of the data
+%       time_start::float   =   The time start of the spectrogram window
+%       time_end::float     =   The time end of the spectrogram window
 %
 %   Sam Kramer
 %   July 28th, 2023
@@ -32,7 +30,9 @@ function spectrogram_function(data, fs, time_start, time_end)
         % --Pull in data
             data = data(ind1:ind2);
             data = data - mean(data);
+            i = "true";
     catch
+        i = "false";
         disp("Displaying Whole Time Set")
         data = data - mean(data);
     end
@@ -47,7 +47,9 @@ function spectrogram_function(data, fs, time_start, time_end)
 
 % --Reformat time
     try
-        t = time_start:1/fs:time_end;
+        if i == "true"
+            t = time_start:1/fs:time_end;
+        end
     catch
     end
 

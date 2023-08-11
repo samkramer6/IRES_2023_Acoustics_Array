@@ -9,7 +9,7 @@ function ind = five_peak_finder(corr, peak_thresh)
 %   August 9th, 2023
 
 % --setup
-    num_peaks = 10;
+    num_peaks = 12;
 
 % --find peaks
     [~,temp_ind] = findpeaks(corr,"MinPeakHeight",peak_thresh,"MinPeakDistance",4000);
@@ -29,9 +29,7 @@ function ind = five_peak_finder(corr, peak_thresh)
 
                 % --Selecting the top values
                     ind(i,1) = pks(peakind(i),2);
-
             end
-
     else
 
         % --Return entire dataset

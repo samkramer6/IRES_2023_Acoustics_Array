@@ -13,7 +13,7 @@ Summer 2023
 
 This will help you develop spectrograms for the use of the acoustics research projects. Here are some of those spectrograms captured in 2023!
 
-[!Alt text](Images\Spectrogram1.jpg)
+[!Alt text](Spectrogram1.jpg)
 
 ## Use of System
 

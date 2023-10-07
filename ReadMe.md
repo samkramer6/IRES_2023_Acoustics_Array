@@ -11,10 +11,7 @@ Summer 2023
 > [!NOTE]
 > This is not the only documentation on the acoustics setup.
 
-This will help you develop spectrograms for the use of the acoustics research projects. Here are some of those spectrograms captured in 2023!
-
-[!Alt text](Spectrogram1.jpg)
-![](Spectrogram%201.jpg)
+This will help you develop spectrograms for the use of the acoustics research projects.
 
 ## Use of System
 
